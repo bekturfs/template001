@@ -427,6 +427,9 @@
   @keyframes ringPulse{from{transform:scale(1);opacity:.7}to{transform:scale(1.6);opacity:0}}
 
   /* ── Режим съёмки (?video): секции во весь экран, автоскролл ── */
+  /* окно не скроллится вовсе — контент двигается transform'ом на GPU */
+  body.video-mode{overflow:hidden;height:100vh;height:100dvh}
+  body.video-mode #stage{will-change:transform}
   body.video-mode section,body.video-mode footer{
     min-height:100vh;min-height:100dvh;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -501,6 +504,7 @@
 </div>
 <noscript><style>.env-screen{display:none}.anim,.scroll-cue{opacity:1}.tk-draw{stroke-dashoffset:0}body.env-locked{overflow:auto}</style></noscript>
 
+<div id="stage">
 <!-- ═══ HERO ═══ -->
 <header class="hero">
   <div class="hero-sparks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -662,6 +666,7 @@
   <p class="foot-line">Сиздерди чыдамсыздык менен күтөбүз!</p>
   <p class="foot-names" id="foot-names">Сезим · Кыз узатуу · 2026</p>
 </footer>
+</div>
 
 <!-- ═══ МУЗЫКА ═══ -->
 <audio id="bg-music" preload="auto"></audio>
@@ -878,28 +883,32 @@ if (videoMode) {
 }
 function startAutoScroll() {
   // раскрываем все секции заранее: анимации появления во время проезда
-  // накладываются на движение скролла и читаются как дёргание
+  // накладываются на движение и читаются как дёргание
   document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+  // окно не скроллим — двигаем контент transform'ом: его анимирует
+  // композитор GPU в обход основного потока, поэтому движение ровное
+  const stage = $("stage");
   const targets = [".invite", ".blessing", ".details", ".program", "footer"]
     .map(s => document.querySelector(s)).filter(Boolean);
+  // offsetTop не зависит от CSS-трансформаций (в отличие от getBoundingClientRect,
+  // который в момент замера ловит секции посреди анимации раскрытия)
+  const tops = targets.map(el => {
+    let y = 0;
+    for (let n = el; n && n !== document.body; n = n.offsetParent) y += n.offsetTop;
+    return y;
+  });
   const TRAVEL = 4000, DWELL = 5300;   // мс: проезд между секциями и пауза на секции
-  // smootherstep: нулевая скорость и ускорение на концах — без рывков и дрожи
-  const ease = u => u <= 0 ? 0 : u >= 1 ? 1 : u * u * u * (u * (6 * u - 15) + 10);
   let i = 0;
-  const next = () => {
-    if (i >= targets.length) return;
-    const from = window.scrollY;
-    const to = targets[i].getBoundingClientRect().top + window.scrollY;
-    const t0 = performance.now();
-    const step = now => {
-      const u = Math.min((now - t0) / TRAVEL, 1);
-      window.scrollTo(0, from + (to - from) * ease(u));
-      if (u < 1) requestAnimationFrame(step);
-      else { i++; setTimeout(next, DWELL); }
-    };
-    requestAnimationFrame(step);
+  const go = () => {
+    if (i >= tops.length) return;
+    stage.style.transition = "transform " + TRAVEL + "ms cubic-bezier(.5,.02,.15,1)";
+    stage.style.transform = "translate3d(0," + (-tops[i]) + "px,0)";
+    let fired = false;
+    const done = () => { if (fired) return; fired = true; i++; setTimeout(go, DWELL); };
+    stage.addEventListener("transitionend", done, { once: true });
+    setTimeout(done, TRAVEL + 150);    // страховка, если transitionend не придёт
   };
-  next();
+  go();
 }
 
 // Конверт: клик по нему — тот самый «жест», после которого можно включать звук
@@ -908,7 +917,7 @@ const envScreen = $("env-screen"), envelope = $("envelope");
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 envelope.addEventListener("click", () => {
   envelope.classList.add("open");
-  if (CONFIG.music) startMusic();
+  if (CONFIG.music && !videoMode) startMusic();  // в режиме съёмки музыку кладут на монтаже
   setTimeout(() => {
     envScreen.classList.add("gone");
     document.body.classList.remove("env-locked");
