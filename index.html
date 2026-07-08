@@ -432,6 +432,10 @@
   body.video-mode .wrap{width:100%}
   body.video-mode .rsvp,body.video-mode #map-btn,
   body.video-mode .music-btn,body.video-mode .scroll-cue{display:none}
+  .blessing{display:none}                      /* только для режима съёмки */
+  body.video-mode #countdown{display:none}
+  body.video-mode .blessing{display:flex}
+  .blessing .verse{font-size:1.16rem;margin-bottom:0}
   body.video-mode .details .divider{margin-bottom:14px}
   body.video-mode .cal{margin-bottom:16px}
   body.video-mode .cal-month{margin-bottom:10px}
@@ -544,7 +548,7 @@
 </section>
 
 <!-- ═══ ОБРАТНЫЙ ОТСЧЁТ ═══ -->
-<section class="band reveal">
+<section class="band reveal" id="countdown">
   <svg class="band-mark" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
   <div class="wrap">
     <h2>Тойго чейин калды</h2>
@@ -555,6 +559,18 @@
       <div class="cd-cell"><div class="cd-num" id="cd-s">—</div><div class="cd-lbl">Секунд</div></div>
     </div>
     <p class="cd-done" id="cd-done" hidden>Күн келип жетти — бүгүн той! 🎉</p>
+  </div>
+</section>
+
+<!-- ═══ АК БАТА (показывается вместо отсчёта в режиме съёмки ?video) ═══ -->
+<section class="band blessing reveal">
+  <svg class="band-mark" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
+  <div class="wrap">
+    <h2>Кыз узатуу — улуу салт</h2>
+    <p class="verse">Барктап келген улуу салттуу элибиз,<br>
+    Кыз узатуу аземине келиңиз.<br>
+    Салтанаттуу ак дасторкон үстүндө,<br>
+    Бакыт каалап батаңызды бериңиз!</p>
   </div>
 </section>
 
@@ -839,9 +855,9 @@ if (videoMode) {
   document.documentElement.style.scrollBehavior = "auto"; // скроллом управляем сами
 }
 function startAutoScroll() {
-  const targets = [".invite", ".band", ".details", ".program", "footer"]
+  const targets = [".invite", ".blessing", ".details", ".program", "footer"]
     .map(s => document.querySelector(s)).filter(Boolean);
-  const TRAVEL = 1700, DWELL = 2600;   // мс: проезд между секциями и пауза на секции
+  const TRAVEL = 2550, DWELL = 3900;   // мс: проезд между секциями и пауза на секции
   const ease = u => {                  // пружина: быстрый старт, мягкое торможение
     if (u >= 1) return 1;
     const z = 0.85, w = 9, wd = w * Math.sqrt(1 - z * z);
