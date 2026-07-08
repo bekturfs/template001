@@ -75,7 +75,8 @@
   .c-bl{bottom:14px;left:14px;transform:rotate(270deg)}
 
   .tunduk{width:clamp(72px,17vw,96px);height:auto;color:var(--altyn);margin:0 auto 26px}
-  .tk-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.6s ease .15s forwards}
+  .tk-draw{stroke-dasharray:1;stroke-dashoffset:1}
+  body.opened .tk-draw{animation:draw 1.6s ease .15s forwards}
   @keyframes draw{to{stroke-dashoffset:0}}
 
   .eyebrow{
@@ -109,8 +110,8 @@
     position:absolute;left:50%;bottom:24px;
     transform:translate(-50%,0);
     color:var(--altyn);opacity:0;
-    animation:cueIn .9s ease 2.6s forwards, bob 2.2s ease-in-out 3.5s infinite;
   }
+  body.opened .scroll-cue{animation:cueIn .9s ease 2.6s forwards, bob 2.2s ease-in-out 3.5s infinite}
   @keyframes cueIn{to{opacity:.9}}
   @keyframes bob{
     0%,100%{transform:translate(-50%,0)}
@@ -123,12 +124,13 @@
     position:absolute;bottom:-10px;border-radius:50%;
     background:var(--altyn);opacity:0;
     animation:spark linear infinite;
+    will-change:transform,opacity;
   }
   @keyframes spark{
-    0%{transform:translateY(0) scale(.6);opacity:0}
+    0%{transform:translate3d(0,0,0) scale(.6);opacity:0}
     12%{opacity:.5}
     80%{opacity:.2}
-    100%{transform:translateY(-94vh) scale(1.1);opacity:0}
+    100%{transform:translate3d(0,-94vh,0) scale(1.1);opacity:0}
   }
   .hero-sparks i:nth-child(1){left:8%;width:5px;height:5px;animation-duration:14s;animation-delay:0s}
   .hero-sparks i:nth-child(2){left:19%;width:4px;height:4px;animation-duration:17s;animation-delay:3s}
@@ -140,8 +142,9 @@
   .hero-sparks i:nth-child(8){left:88%;width:4px;height:4px;animation-duration:19s;animation-delay:7s}
   .hero-sparks i:nth-child(9){left:95%;width:5px;height:5px;animation-duration:15s;animation-delay:10s}
 
-  /* появление элементов hero при загрузке */
-  .anim{opacity:0;animation:fadeUp .8s ease forwards}
+  /* появление элементов hero — стартует после открытия конверта */
+  .anim{opacity:0}
+  body.opened .anim{animation:fadeUp .8s ease forwards}
   .d1{animation-delay:1.0s}.d2{animation-delay:1.15s}.d3{animation-delay:1.45s}
   .d4{animation-delay:1.65s}.d5{animation-delay:1.8s}
   @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
@@ -301,12 +304,84 @@
   .foot-line{font-family:var(--serif);font-size:clamp(1.25rem,5vw,1.6rem);max-width:420px;margin:0 auto}
   .foot-names{color:var(--muted);font-size:.88rem;letter-spacing:.14em;text-transform:uppercase;margin-top:14px}
 
+  /* ── КОНВЕРТ (заставка) ───────────────────── */
+  body.env-locked{overflow:hidden}
+  .env-screen{
+    position:fixed;inset:0;z-index:100;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
+    padding:24px;
+    background:radial-gradient(closest-side at 50% 45%,#FBF7ED 0%,var(--boz) 100%);
+    transition:opacity .7s ease,visibility .7s;
+  }
+  .env-screen.gone{opacity:0;visibility:hidden;pointer-events:none}
+  .env-title{
+    font-family:var(--serif);font-size:clamp(1.25rem,4.6vw,1.6rem);
+    color:var(--ink);text-align:center;line-height:1.4;
+  }
+  .env-title small{display:block;font-size:.62em;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:6px}
+  .env-hint{
+    font-size:.8rem;font-weight:600;letter-spacing:.22em;text-indent:.22em;
+    text-transform:uppercase;color:var(--kyzyl);
+    animation:hintPulse 1.9s ease-in-out infinite;
+  }
+  @keyframes hintPulse{0%,100%{opacity:.5}50%{opacity:1}}
+  .env{
+    position:relative;border:0;background:none;cursor:pointer;padding:0;
+    width:min(320px,82vw);aspect-ratio:10/7;
+    perspective:900px;
+    filter:drop-shadow(0 20px 36px rgba(51,35,28,.2));
+    -webkit-tap-highlight-color:transparent;
+  }
+  .env-back{
+    position:absolute;inset:0;border-radius:12px;
+    background:linear-gradient(180deg,#EFE6D2,#E7DAC0);
+    border:1.5px solid rgba(185,134,47,.55);
+  }
+  .env-letter{
+    position:absolute;left:7%;right:7%;top:9%;bottom:15%;
+    background:#FBF7ED;border:1px solid rgba(185,134,47,.45);border-radius:8px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+    transition:transform .8s cubic-bezier(.22,.61,.36,1) .4s;
+  }
+  .env.open .env-letter{transform:translateY(-36%)}
+  .env-letter svg{width:30px;color:var(--altyn)}
+  .l-eyebrow{font-size:.58rem;font-weight:600;letter-spacing:.28em;text-indent:.28em;text-transform:uppercase;color:var(--kyzyl)}
+  .l-name{font-family:var(--serif);font-size:1.65rem;line-height:1.1}
+  .env-pocket{
+    position:absolute;inset:0;border-radius:12px;
+    background:linear-gradient(180deg,var(--boz-deep),#E2D3B8);
+    clip-path:polygon(0 0,50% 46%,100% 0,100% 100%,0 100%);
+    border:1.5px solid rgba(185,134,47,.55);
+  }
+  .env-flap{
+    position:absolute;left:0;right:0;top:0;height:58%;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    background:linear-gradient(180deg,var(--kyzyl) 0%,var(--kyzyl-deep) 100%);
+    border-radius:12px 12px 0 0;
+    transform-origin:top center;
+    transition:transform .8s cubic-bezier(.55,.06,.35,1);
+    backface-visibility:hidden;
+  }
+  .env.open .env-flap{transform:rotateX(180deg)}
+  .env-seal{
+    position:absolute;left:50%;top:58%;
+    width:62px;height:62px;border-radius:50%;
+    transform:translate(-50%,-50%);
+    background:var(--boz);border:2px solid var(--altyn);color:var(--altyn);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 3px 10px rgba(51,35,28,.22);
+    transition:transform .45s ease,opacity .35s ease;
+  }
+  .env.open .env-seal{opacity:0;transform:translate(-50%,-50%) scale(.55) rotate(-14deg)}
+  .env-seal svg{width:38px}
+
   /* ── Появление секций при скролле ─────────── */
   .reveal{
     opacity:0;transform:translateY(26px);
     transition:opacity 1s cubic-bezier(.22,.61,.36,1),transform 1s cubic-bezier(.22,.61,.36,1);
+    will-change:opacity,transform;
   }
-  .reveal.visible{opacity:1;transform:none}
+  .reveal.visible{opacity:1;transform:none;will-change:auto}
   /* мягкий каскад внутри секций */
   .row,.cd-cell{
     opacity:0;transform:translateY(12px);
@@ -340,19 +415,41 @@
   @keyframes ringPulse{from{transform:scale(1);opacity:.7}to{transform:scale(1.6);opacity:0}}
 
   @media (prefers-reduced-motion:reduce){
-    .anim,.scroll-cue{animation:none;opacity:1}
-    .tk-draw{animation:none;stroke-dashoffset:0}
+    .anim,.scroll-cue,body.opened .anim,body.opened .scroll-cue{animation:none;opacity:1}
+    .tk-draw,body.opened .tk-draw{animation:none;stroke-dashoffset:0}
     .reveal{opacity:1;transform:none;transition:none}
     .hero-sparks{display:none}
     .cd-num.tick{animation:none}
     .timeline li,.row,.cd-cell{opacity:1;transform:none;transition:none}
     .cal-ring ellipse{stroke-dashoffset:0;transition:none}
     .music-btn.playing::after{animation:none;display:none}
+    .env-hint{animation:none}
+    .env-flap,.env-letter,.env-seal,.env-screen{transition:none}
     html{scroll-behavior:auto}
   }
 </style>
 </head>
-<body>
+<body class="env-locked">
+
+<!-- ═══ КОНВЕРТ (заставка) ═══ -->
+<div class="env-screen" id="env-screen">
+  <p class="env-title" id="env-title">Сизге чакыруу келди<small>Сезим · Кыз узатуу тою</small></p>
+  <button class="env" id="envelope" type="button" aria-label="Конвертти ачуу">
+    <span class="env-back"></span>
+    <span class="env-letter">
+      <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
+      <span class="l-eyebrow">Кыз узатуу тою</span>
+      <span class="l-name" id="env-name">Сезим</span>
+    </span>
+    <span class="env-pocket"></span>
+    <span class="env-flap"></span>
+    <span class="env-seal">
+      <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
+    </span>
+  </button>
+  <p class="env-hint">Ачуу үчүн басыңыз</p>
+</div>
+<noscript><style>.env-screen{display:none}.anim,.scroll-cue{opacity:1}.tk-draw{stroke-dashoffset:0}body.env-locked{overflow:auto}</style></noscript>
 
 <!-- ═══ HERO ═══ -->
 <header class="hero">
@@ -700,21 +797,29 @@ if (CONFIG.music) {
   music.addEventListener("canplay", () => musicBtn.classList.add("ready"), { once: true });
   music.addEventListener("error", () => musicBtn.classList.remove("ready"));
   musicBtn.addEventListener("click", () => music.paused ? startMusic() : stopMusic());
-  const firstTouch = e => {
-    ["pointerdown", "keydown"].forEach(ev => document.removeEventListener(ev, firstTouch));
-    if (musicBtn.contains(e.target)) return;      // тап по кнопке обработает её клик
-    if (!musicStarted && music.paused) startMusic();
-  };
-  ["pointerdown", "keydown"].forEach(ev => document.addEventListener(ev, firstTouch, { passive: true }));
-  startMusic();   // вдруг браузер разрешит автозапуск сразу
 }
 
-// Появление секций при скролле
+// Конверт: клик по нему — тот самый «жест», после которого можно включать звук
+$("env-name").textContent = CONFIG.celebrant;
+const envScreen = $("env-screen"), envelope = $("envelope");
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+envelope.addEventListener("click", () => {
+  envelope.classList.add("open");
+  if (CONFIG.music) startMusic();
+  setTimeout(() => {
+    envScreen.classList.add("gone");
+    document.body.classList.remove("env-locked");
+    document.body.classList.add("opened");
+  }, reduceMotion ? 150 : 1200);
+  setTimeout(() => envScreen.remove(), reduceMotion ? 1000 : 2100);
+}, { once: true });
+
+// Появление секций при скролле (срабатывает чуть заранее — скролл ощущается глаже)
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.05, rootMargin: "0px 0px 12% 0px" });
 document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 </script>
 </body>
