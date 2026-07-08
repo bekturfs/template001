@@ -274,32 +274,6 @@
   .btn-light{background:var(--boz);color:var(--kyzyl-deep);margin-top:28px;box-shadow:0 4px 18px rgba(0,0,0,.22)}
   .btn-light:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(0,0,0,.3)}
 
-  /* ── ПРОГРАММА ────────────────────────────── */
-  .program .divider{width:230px;margin:6px auto 34px;color:var(--altyn)}
-  .timeline{list-style:none;max-width:340px;margin:0 auto;text-align:left;position:relative}
-  .timeline::before{
-    content:"";position:absolute;left:4.5px;top:8px;bottom:8px;
-    width:1.5px;background:rgba(185,134,47,.4);
-  }
-  .timeline li{position:relative;padding:0 0 26px 32px}
-  .timeline li:last-child{padding-bottom:0}
-  .timeline li::before{
-    content:"";position:absolute;left:0;top:7px;
-    width:10px;height:10px;background:var(--altyn);
-    transform:rotate(45deg);
-  }
-  .t-time{font-family:var(--serif);font-weight:600;font-size:1.08rem;color:var(--kyzyl)}
-  .t-name{color:#4A382D;margin-top:1px}
-  /* поочерёдное появление пунктов программы */
-  .timeline li{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-  .reveal.visible .timeline li{opacity:1;transform:none}
-  .reveal.visible .timeline li:nth-child(1){transition-delay:.1s}
-  .reveal.visible .timeline li:nth-child(2){transition-delay:.25s}
-  .reveal.visible .timeline li:nth-child(3){transition-delay:.4s}
-  .reveal.visible .timeline li:nth-child(4){transition-delay:.55s}
-  .reveal.visible .timeline li:nth-child(5){transition-delay:.7s}
-  .reveal.visible .timeline li:nth-child(6){transition-delay:.85s}
-
   /* ── RSVP ─────────────────────────────────── */
   .rsvp p{max-width:420px;margin:0 auto;color:rgba(246,240,228,.85)}
 
@@ -311,7 +285,6 @@
   }
   .foot-tunduk{width:46px;color:var(--altyn);margin:0 auto 18px}
   .foot-line{font-family:var(--serif);font-size:clamp(1.25rem,5vw,1.6rem);max-width:420px;margin:0 auto}
-  .foot-names{color:var(--muted);font-size:.88rem;letter-spacing:.14em;text-transform:uppercase;margin-top:14px}
 
   /* ── КОНВЕРТ (заставка) ───────────────────── */
   body.env-locked{overflow:hidden}
@@ -443,8 +416,7 @@
   }
   body.video-mode .wrap{width:100%}
   body.video-mode .rsvp,body.video-mode #map-btn,
-  body.video-mode .music-btn,body.video-mode .scroll-cue,
-  body.video-mode .program,body.video-mode .foot-names{display:none}
+  body.video-mode .music-btn,body.video-mode .scroll-cue{display:none}
   /* экран-конверт в режиме съёмки: без лишних надписей, имя крупнее */
   body.video-mode .env-hint,body.video-mode .env-t-main{display:none}
   body.video-mode .env-title small{
@@ -480,7 +452,7 @@
     .reveal{opacity:1;transform:none;transition:none}
     .hero-sparks{display:none}
     .cd-num.tick{animation:none}
-    .timeline li,.row,.cd-cell{opacity:1;transform:none;transition:none}
+    .row,.cd-cell{opacity:1;transform:none;transition:none}
     .cal-ring ellipse{stroke-dashoffset:0;transition:none}
     .music-btn.playing::after{animation:none;display:none}
     .env-hint{animation:none}
@@ -641,15 +613,6 @@
   </div>
 </section>
 
-<!-- ═══ ПРОГРАММА ═══ -->
-<section class="program reveal">
-  <div class="wrap">
-    <h2>Той программасы</h2>
-    <svg class="divider" viewBox="0 0 320 84" fill="none" aria-hidden="true"><use href="#divider-src"/></svg>
-    <ul class="timeline" id="program-list"></ul>
-  </div>
-</section>
-
 <!-- ═══ RSVP ═══ -->
 <section class="band rsvp reveal">
   <svg class="band-mark" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
@@ -671,7 +634,6 @@
 <footer>
   <svg class="foot-tunduk" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
   <p class="foot-line">Сиздерди чыдамсыздык менен күтөбүз!</p>
-  <p class="foot-names" id="foot-names">Сезим · Кыз узатуу · 2026</p>
 </footer>
 </div>
 
@@ -750,14 +712,6 @@ const CONFIG = {
   musicVolume: 0.75,      // целевая громкость (0…1)
   musicFadeSec: 8,        // за сколько секунд нарастает звук
   musicStartAt: 13,       // с какой секунды трека начинать (пропуск тихого вступления)
-
-  program: [
-    ["13:00", "Конокторду тосуу"],
-    ["14:00", "Салтанаттуу бөлүк"],
-    ["15:00", "Куттуктоолор жана ак баталар"],
-    ["16:30", "Бий кечеси"],
-    ["18:00", "Кызды узатуу салты"],
-  ],
 };
 /* ══════════════════════════ /CONFIG ══════════════════════════ */
 
@@ -775,24 +729,10 @@ $("rsvp-deadline").textContent = CONFIG.rsvpDeadline;
 $("map-btn").href = CONFIG.mapUrl;
 $("wa-btn").href = "https://wa.me/" + CONFIG.whatsappPhone +
                    "?text=" + encodeURIComponent(CONFIG.whatsappText);
-$("foot-names").textContent = CONFIG.celebrant + " · Кыз узатуу · " +
-                              new Date(CONFIG.dateISO).getFullYear();
 document.title = CONFIG.celebrant + " — Кыз узатуу тою";
 
 if (CONFIG.hosts) { $("hosts").textContent = CONFIG.hosts; }
 else { $("hosts").remove(); }
-
-// Программа
-const ul = $("program-list");
-CONFIG.program.forEach(([t, n]) => {
-  const li = document.createElement("li");
-  const time = document.createElement("div");
-  time.className = "t-time"; time.textContent = t;
-  const name = document.createElement("div");
-  name.className = "t-name"; name.textContent = n;
-  li.append(time, name);
-  ul.appendChild(li);
-});
 
 // Обратный отсчёт (с лёгкой анимацией смены цифр)
 const target = new Date(CONFIG.dateISO).getTime();
