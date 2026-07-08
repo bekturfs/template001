@@ -9,10 +9,9 @@
      не нужно, JS сам подставит везде.
   2) Заголовок вкладки и превью ссылки в WhatsApp — <title> и
      og:-теги ниже (краулеры JS не выполняют, поэтому руками).
-  3) Бесплатная ссылка (Cloudflare Pages, без git):
-     dash.cloudflare.com → Workers & Pages → Create → Pages →
-     Upload assets → перетащи папку с этим index.html → Deploy.
-     Обновить сайт: тот же проект → Create new deployment.
+  3) Музыка: положи mp3-файл с именем music.mp3 рядом с
+     index.html (в корень репозитория). Кнопка-нота появится сама;
+     громкость плавно нарастает после первого касания страницы.
   ══════════════════════════════════════════════════════════════
 -->
 <meta charset="UTF-8">
@@ -117,6 +116,29 @@
     50%{transform:translate(-50%,9px)}
   }
 
+  /* парящие золотые искры в шапке */
+  .hero-sparks{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+  .hero-sparks i{
+    position:absolute;bottom:-10px;border-radius:50%;
+    background:var(--altyn);opacity:0;
+    animation:spark linear infinite;
+  }
+  @keyframes spark{
+    0%{transform:translateY(0) scale(.6);opacity:0}
+    12%{opacity:.5}
+    80%{opacity:.2}
+    100%{transform:translateY(-94vh) scale(1.1);opacity:0}
+  }
+  .hero-sparks i:nth-child(1){left:8%;width:5px;height:5px;animation-duration:14s;animation-delay:0s}
+  .hero-sparks i:nth-child(2){left:19%;width:4px;height:4px;animation-duration:17s;animation-delay:3s}
+  .hero-sparks i:nth-child(3){left:31%;width:6px;height:6px;animation-duration:12s;animation-delay:6s}
+  .hero-sparks i:nth-child(4){left:44%;width:4px;height:4px;animation-duration:18s;animation-delay:1.5s}
+  .hero-sparks i:nth-child(5){left:57%;width:5px;height:5px;animation-duration:13s;animation-delay:8s}
+  .hero-sparks i:nth-child(6){left:68%;width:4px;height:4px;animation-duration:16s;animation-delay:4.5s}
+  .hero-sparks i:nth-child(7){left:79%;width:6px;height:6px;animation-duration:14.5s;animation-delay:2s}
+  .hero-sparks i:nth-child(8){left:88%;width:4px;height:4px;animation-duration:19s;animation-delay:7s}
+  .hero-sparks i:nth-child(9){left:95%;width:5px;height:5px;animation-duration:15s;animation-delay:10s}
+
   /* появление элементов hero при загрузке */
   .anim{opacity:0;animation:fadeUp .8s ease forwards}
   .d1{animation-delay:1.0s}.d2{animation-delay:1.15s}.d3{animation-delay:1.45s}
@@ -165,6 +187,8 @@
     font-size:clamp(1.65rem,7.5vw,2.5rem);line-height:1;
     font-variant-numeric:tabular-nums;
   }
+  .cd-num.tick{animation:numTick .45s ease}
+  @keyframes numTick{from{opacity:.15;transform:translateY(-7px)}to{opacity:1;transform:none}}
   .cd-lbl{
     font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
     color:var(--altyn-soft);margin-top:8px;
@@ -213,6 +237,15 @@
   }
   .t-time{font-family:var(--serif);font-weight:600;font-size:1.08rem;color:var(--kyzyl)}
   .t-name{color:#4A382D;margin-top:1px}
+  /* поочерёдное появление пунктов программы */
+  .timeline li{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.visible .timeline li{opacity:1;transform:none}
+  .reveal.visible .timeline li:nth-child(1){transition-delay:.1s}
+  .reveal.visible .timeline li:nth-child(2){transition-delay:.25s}
+  .reveal.visible .timeline li:nth-child(3){transition-delay:.4s}
+  .reveal.visible .timeline li:nth-child(4){transition-delay:.55s}
+  .reveal.visible .timeline li:nth-child(5){transition-delay:.7s}
+  .reveal.visible .timeline li:nth-child(6){transition-delay:.85s}
 
   /* ── RSVP ─────────────────────────────────── */
   .rsvp p{max-width:420px;margin:0 auto;color:rgba(246,240,228,.85)}
@@ -231,10 +264,35 @@
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
   .reveal.visible{opacity:1;transform:none}
 
+  /* ── Кнопка музыки ────────────────────────── */
+  .music-btn{
+    position:fixed;right:16px;bottom:16px;z-index:60;
+    width:54px;height:54px;border-radius:50%;
+    background:var(--boz);border:1.5px solid var(--altyn);
+    color:var(--altyn);cursor:pointer;
+    display:none;align-items:center;justify-content:center;
+    box-shadow:0 4px 16px rgba(51,35,28,.22);
+    transition:transform .2s ease;
+  }
+  .music-btn.ready{display:flex}
+  .music-btn:hover{transform:scale(1.07)}
+  .music-btn svg{width:23px;height:23px}
+  .music-btn.playing .mute-line{display:none}
+  .music-btn.playing::after{
+    content:"";position:absolute;inset:-1.5px;border-radius:50%;
+    border:1.5px solid var(--altyn);
+    animation:ringPulse 2.4s ease-out infinite;
+  }
+  @keyframes ringPulse{from{transform:scale(1);opacity:.7}to{transform:scale(1.6);opacity:0}}
+
   @media (prefers-reduced-motion:reduce){
     .anim,.scroll-cue{animation:none;opacity:1}
     .tk-draw{animation:none;stroke-dashoffset:0}
     .reveal{opacity:1;transform:none;transition:none}
+    .hero-sparks{display:none}
+    .cd-num.tick{animation:none}
+    .timeline li{opacity:1;transform:none;transition:none}
+    .music-btn.playing::after{animation:none;display:none}
     html{scroll-behavior:auto}
   }
 </style>
@@ -243,6 +301,7 @@
 
 <!-- ═══ HERO ═══ -->
 <header class="hero">
+  <div class="hero-sparks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <svg class="corner c-tl" viewBox="0 0 120 120" fill="none" aria-hidden="true">
     <path d="M118 10 H30 Q10 10 10 30 V118" stroke="currentColor" stroke-width="2.4"/>
     <path d="M118 20 H36 Q20 20 20 36 V118" stroke="currentColor" stroke-width="1" opacity=".55"/>
@@ -365,6 +424,17 @@
   <p class="foot-names" id="foot-names">Сезим · Кыз узатуу · 2026</p>
 </footer>
 
+<!-- ═══ МУЗЫКА ═══ -->
+<audio id="bg-music" loop preload="auto"></audio>
+<button class="music-btn" id="music-btn" type="button" aria-label="Музыканы күйгүзүү / өчүрүү">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M9 18 V6 L20 4 V16" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    <circle cx="6.6" cy="18" r="2.5" stroke="currentColor" stroke-width="1.8"/>
+    <circle cx="17.6" cy="16" r="2.5" stroke="currentColor" stroke-width="1.8"/>
+    <line class="mute-line" x1="4" y1="21" x2="21" y2="3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </svg>
+</button>
+
 <!-- Скрытые исходники орнаментов для переиспользования через <use> -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -424,6 +494,11 @@ const CONFIG = {
   // Той ээлери — оставь "" (пустую строку), чтобы скрыть строку
   hosts: "Той ээлери: Султан & Нургул",
 
+  // Музыка: mp3-файл рядом с index.html; "" — отключить совсем
+  music: "music.mp3",
+  musicVolume: 0.75,      // целевая громкость (0…1)
+  musicFadeSec: 8,        // за сколько секунд нарастает звук
+
   program: [
     ["13:00", "Конокторду тосуу"],
     ["14:00", "Салтанаттуу бөлүк"],
@@ -467,9 +542,17 @@ CONFIG.program.forEach(([t, n]) => {
   ul.appendChild(li);
 });
 
-// Обратный отсчёт
+// Обратный отсчёт (с лёгкой анимацией смены цифр)
 const target = new Date(CONFIG.dateISO).getTime();
 const pad = v => String(v).padStart(2, "0");
+function setNum(id, text) {
+  const el = $(id);
+  if (el.textContent === text) return;
+  el.textContent = text;
+  el.classList.remove("tick");
+  void el.offsetWidth;           // перезапуск CSS-анимации
+  el.classList.add("tick");
+}
 function tick() {
   const diff = target - Date.now();
   if (diff <= 0) {
@@ -478,13 +561,73 @@ function tick() {
     clearInterval(timer);
     return;
   }
-  $("cd-d").textContent = Math.floor(diff / 86400000);
-  $("cd-h").textContent = pad(Math.floor(diff / 3600000) % 24);
-  $("cd-m").textContent = pad(Math.floor(diff / 60000) % 60);
-  $("cd-s").textContent = pad(Math.floor(diff / 1000) % 60);
+  setNum("cd-d", String(Math.floor(diff / 86400000)));
+  setNum("cd-h", pad(Math.floor(diff / 3600000) % 24));
+  setNum("cd-m", pad(Math.floor(diff / 60000) % 60));
+  setNum("cd-s", pad(Math.floor(diff / 1000) % 60));
 }
 const timer = setInterval(tick, 1000);
 tick();
+
+// Музыка: старт после первого касания страницы, громкость нарастает с нуля.
+// Громкость ведём через Web Audio (GainNode) — iOS игнорирует audio.volume.
+const music = $("bg-music"), musicBtn = $("music-btn");
+let actx = null, gainNode = null, musicStarted = false;
+function setupAudioGraph() {
+  if (actx || !(window.AudioContext || window.webkitAudioContext)) return;
+  try {
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    const src = actx.createMediaElementSource(music);
+    gainNode = actx.createGain();
+    gainNode.gain.value = 0;
+    src.connect(gainNode);
+    gainNode.connect(actx.destination);
+  } catch (e) { actx = null; gainNode = null; }
+}
+function fadeInMusic() {
+  const vol = CONFIG.musicVolume, dur = CONFIG.musicFadeSec;
+  if (gainNode) {
+    const t = actx.currentTime;
+    gainNode.gain.cancelScheduledValues(t);
+    gainNode.gain.setValueAtTime(gainNode.gain.value, t);
+    gainNode.gain.linearRampToValueAtTime(vol, t + dur);
+  } else {
+    music.volume = 0;
+    const step = vol / (dur * 20);
+    const iv = setInterval(() => {
+      const v = Math.min(vol, music.volume + step);
+      music.volume = v;
+      if (v >= vol) clearInterval(iv);
+    }, 50);
+  }
+}
+function startMusic() {
+  setupAudioGraph();
+  if (actx && actx.state === "suspended") actx.resume().catch(() => {});
+  music.volume = gainNode ? 1 : 0;
+  music.play().then(() => {
+    fadeInMusic();
+    musicBtn.classList.add("playing");
+    musicStarted = true;
+  }).catch(() => {});   // автозапуск запрещён — ждём касания
+}
+function stopMusic() {
+  music.pause();
+  musicBtn.classList.remove("playing");
+}
+if (CONFIG.music) {
+  music.src = CONFIG.music;
+  music.addEventListener("canplay", () => musicBtn.classList.add("ready"), { once: true });
+  music.addEventListener("error", () => musicBtn.classList.remove("ready"));
+  musicBtn.addEventListener("click", () => music.paused ? startMusic() : stopMusic());
+  const firstTouch = e => {
+    ["pointerdown", "keydown"].forEach(ev => document.removeEventListener(ev, firstTouch));
+    if (musicBtn.contains(e.target)) return;      // тап по кнопке обработает её клик
+    if (!musicStarted && music.paused) startMusic();
+  };
+  ["pointerdown", "keydown"].forEach(ev => document.addEventListener(ev, firstTouch, { passive: true }));
+  startMusic();   // вдруг браузер разрешит автозапуск сразу
+}
 
 // Появление секций при скролле
 const io = new IntersectionObserver(entries => {
