@@ -823,6 +823,14 @@ envelope.addEventListener("click", () => {
   setTimeout(() => envScreen.remove(), reduceMotion ? 1000 : 2100);
 }, { once: true });
 
+// ?open или ?open=<сек> — конверт открывается сам (для сервисов записи видео,
+// которые не умеют кликать). Музыка при этом не стартует: браузер требует жест.
+const autoOpen = new URLSearchParams(location.search).get("open");
+if (autoOpen !== null) {
+  const delay = Math.max(0.3, parseFloat(autoOpen) || 1.8) * 1000;
+  setTimeout(() => envelope.click(), delay);
+}
+
 // Появление секций при скролле (срабатывает чуть заранее — скролл ощущается глаже)
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
