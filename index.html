@@ -87,7 +87,9 @@
     padding:96px 34px;
     background:radial-gradient(closest-side at 50% 42%,#FEFCF8 0%,var(--boz) 100%);
   }
-  .flora{position:absolute;height:auto;color:var(--altyn);pointer-events:none}
+  .flora{position:absolute;height:auto;color:var(--altyn);pointer-events:none;
+    animation:sway 9s ease-in-out infinite;transform-origin:top left}
+  @keyframes sway{0%,100%{rotate:0deg}50%{rotate:1.6deg}}
   .f-tl{width:clamp(150px,42vw,250px);top:-12px;left:-16px;transform:scaleY(-1);opacity:.6}
   .f-br{width:clamp(150px,42vw,250px);bottom:-12px;right:-16px;transform:scaleX(-1);opacity:.6}
 
@@ -166,6 +168,11 @@
   .d1{animation-delay:1.0s}.d2{animation-delay:1.15s}.d3{animation-delay:1.45s}
   .d4{animation-delay:1.65s}.d5{animation-delay:1.8s}
   @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  body.opened .hero-date.anim{
+    animation:fadeUp .9s ease forwards,trackIn 1.8s cubic-bezier(.22,.61,.36,1) 1.65s forwards;
+    animation-delay:1.65s,1.65s;
+  }
+  @keyframes trackIn{from{letter-spacing:.44em}to{letter-spacing:.16em}}
 
   /* ── ВЕТОЧКА НАД ЗАГОЛОВКАМИ ──────────────── */
   .sprig{width:118px;height:auto;margin:0 auto 12px;color:var(--kyzyl);opacity:.85}
@@ -307,6 +314,7 @@
     border-top:1px solid rgba(185,134,47,.3);
   }
   .foot-tunduk{width:46px;color:var(--altyn);margin:0 auto 18px}
+  .foot-pre{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:1.02rem;margin-bottom:4px}
   .foot-line{font-family:var(--serif);font-size:clamp(1.25rem,5vw,1.6rem);max-width:420px;margin:0 auto}
 
   /* ── КОНВЕРТ (заставка) ───────────────────── */
@@ -396,6 +404,25 @@
     will-change:opacity,transform;
   }
   .reveal.visible{opacity:1;transform:none;will-change:auto}
+  /* каскад текстов: веточка → заголовок → стихи → абзацы → кнопки */
+  .reveal .sprig,.reveal h2,.reveal .verse,.reveal p,.reveal .cal,
+  .reveal .btn,.reveal .foot-tunduk{
+    opacity:0;transform:translateY(15px);
+    transition:opacity .75s cubic-bezier(.22,.61,.36,1),transform .75s cubic-bezier(.22,.61,.36,1);
+  }
+  .reveal.visible .sprig,.reveal.visible h2,.reveal.visible .verse,
+  .reveal.visible p,.reveal.visible .cal,.reveal.visible .btn,
+  .reveal.visible .foot-tunduk{opacity:1;transform:none}
+  .reveal.visible .sprig{transition-delay:.05s}
+  .reveal.visible h2{transition-delay:.2s}
+  .reveal.visible .cal{transition-delay:.3s}
+  .reveal.visible .verse{transition-delay:.38s}
+  .reveal.visible p{transition-delay:.6s}
+  .reveal.visible .btn{transition-delay:.85s}
+  .reveal.visible .foot-tunduk{transition-delay:.05s}
+  .reveal.visible .foot-pre{transition-delay:.25s}
+  .reveal.visible .foot-line{transition-delay:.45s}
+
   /* мягкий каскад внутри секций */
   .row,.cd-cell{
     opacity:0;transform:translateY(12px);
@@ -461,7 +488,6 @@
   body.video-mode .arch{padding:36px 16px 24px;border-radius:150px 150px 14px 14px}
   /* секция «Качан жана кайда» должна влезать даже с панелью браузера */
   body.video-mode .details{padding:28px 24px}
-  body.video-mode .details h2{font-size:1.55rem;margin-bottom:6px}
   body.video-mode .details .divider{display:none}
   body.video-mode .cal{max-width:300px;margin-bottom:12px}
   body.video-mode .cal-month{font-size:1.02rem;margin-bottom:8px}
@@ -477,6 +503,9 @@
     .hero-sparks{display:none}
     .cd-num.tick{animation:none}
     .row,.cd-cell{opacity:1;transform:none;transition:none}
+    .reveal .sprig,.reveal h2,.reveal .verse,.reveal p,.reveal .cal,
+    .reveal .btn,.reveal .foot-tunduk{opacity:1;transform:none;transition:none}
+    .flora{animation:none}
     .cal-ring ellipse{stroke-dashoffset:0;transition:none}
     .music-btn.playing::after{animation:none;display:none}
     .env-hint{animation:none}
@@ -594,8 +623,7 @@
 <section class="details reveal">
   <div class="wrap">
     <svg class="sprig" viewBox="0 0 120 32" fill="none" aria-hidden="true"><use href="#sprig-src"/></svg>
-    <h2>Качан жана кайда</h2>
-    <div class="cal" aria-label="Август 2026, тою 1-августта">
+        <div class="cal" aria-label="Август 2026, тою 1-августта">
       <div class="cal-month">Август · 2026</div>
       <div class="cal-grid">
         <span class="dow">Дш</span><span class="dow">Ше</span><span class="dow">Ша</span><span class="dow">Бш</span><span class="dow">Жм</span><span class="dow">Иш</span><span class="dow">Жк</span>
@@ -643,9 +671,10 @@
 </section>
 
 <!-- ═══ FOOTER ═══ -->
-<footer>
+<footer class="reveal">
   <svg class="foot-tunduk" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
-  <p class="foot-line">Той ээлери: Султан &amp; Нургул</p>
+  <p class="foot-pre">Сиздерди урматтоо менен,</p>
+  <p class="foot-line">Той ээлери — Султан &amp; Нургул</p>
 </footer>
 </div>
 
@@ -861,9 +890,6 @@ if (videoMode) {
   document.documentElement.style.scrollBehavior = "auto"; // скроллом управляем сами
 }
 function startAutoScroll() {
-  // раскрываем все секции заранее: анимации появления во время проезда
-  // накладываются на движение и читаются как дёргание
-  document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
   // окно не скроллим — двигаем контент transform'ом: его анимирует
   // композитор GPU в обход основного потока, поэтому движение ровное
   const stage = $("stage");
@@ -883,7 +909,11 @@ function startAutoScroll() {
     stage.style.transition = "transform " + TRAVEL + "ms cubic-bezier(.5,.02,.15,1)";
     stage.style.transform = "translate3d(0," + (-tops[i]) + "px,0)";
     let fired = false;
-    const done = () => { if (fired) return; fired = true; i++; setTimeout(go, DWELL); };
+    const done = () => {
+      if (fired) return; fired = true;
+      targets[i].classList.add("visible");   // тексты каскадом, пока «камера» стоит
+      i++; setTimeout(go, DWELL);
+    };
     stage.addEventListener("transitionend", done, { once: true });
     setTimeout(done, TRAVEL + 150);    // страховка, если transitionend не придёт
   };
@@ -920,7 +950,7 @@ const io = new IntersectionObserver(entries => {
     if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
   });
 }, { threshold: 0.05, rootMargin: "0px 0px 12% 0px" });
-document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+if (!videoMode) document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 </script>
 </body>
 </html>
