@@ -85,10 +85,13 @@
     display:grid;place-content:center;
     text-align:center;
     padding:96px 34px;
-    background:radial-gradient(closest-side at 50% 42%,#FEFCF8 0%,var(--boz) 100%);
+    background:
+      radial-gradient(42vw 34vh at 16% 24%,rgba(233,199,170,.2) 0%,transparent 70%),
+      radial-gradient(46vw 36vh at 86% 72%,rgba(226,203,158,.24) 0%,transparent 70%),
+      radial-gradient(closest-side at 50% 42%,#FEFCF8 0%,var(--boz) 100%);
   }
   .flora{position:absolute;height:auto;color:var(--altyn);pointer-events:none;
-    animation:sway 9s ease-in-out infinite;transform-origin:top left}
+    animation:sway 9s ease-in-out infinite}
   @keyframes sway{0%,100%{rotate:0deg}50%{rotate:1.6deg}}
   .f-tl{width:clamp(150px,42vw,250px);top:-12px;left:-16px;transform:scaleY(-1);opacity:.6}
   .f-br{width:clamp(150px,42vw,250px);bottom:-12px;right:-16px;transform:scaleX(-1);opacity:.6}
@@ -111,6 +114,13 @@
     display:grid;gap:0;
     padding:0 .2em;
   }
+  #name-main{
+    background:linear-gradient(100deg,#7A6038 0%,#B08D52 30%,#EAD6A4 50%,#B08D52 70%,#7A6038 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:goldSweep 7s ease-in-out infinite;
+  }
+  @keyframes goldSweep{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
   .names .amp{
     font-family:var(--serif);font-style:italic;font-weight:400;
     font-size:.28em;color:var(--kyzyl);
@@ -137,6 +147,29 @@
     0%,100%{transform:translate(-50%,0)}
     50%{transform:translate(-50%,9px)}
   }
+
+  /* лепестки, плывущие вниз */
+  .petals{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+  .petals i{
+    position:absolute;top:-26px;width:15px;height:11px;
+    background:radial-gradient(ellipse at 30% 30%,#F7E3D6 0%,#EFCDBB 55%,#E3B59F 100%);
+    border-radius:62% 38% 55% 45%/60% 45% 55% 40%;
+    opacity:0;animation:petal linear infinite;
+    will-change:transform,opacity;
+  }
+  @keyframes petal{
+    0%{transform:translate3d(0,-4vh,0) rotate(0deg);opacity:0}
+    8%{opacity:.8}
+    50%{transform:translate3d(-6vw,50vh,0) rotate(170deg);opacity:.75}
+    92%{opacity:.5}
+    100%{transform:translate3d(5vw,106vh,0) rotate(340deg);opacity:0}
+  }
+  .petals i:nth-child(1){left:12%;animation-duration:13s;animation-delay:0s}
+  .petals i:nth-child(2){left:28%;animation-duration:17s;animation-delay:4s;transform-origin:40% 60%}
+  .petals i:nth-child(3){left:45%;animation-duration:14s;animation-delay:8s;width:12px;height:9px}
+  .petals i:nth-child(4){left:61%;animation-duration:18s;animation-delay:2s}
+  .petals i:nth-child(5){left:74%;animation-duration:15s;animation-delay:10s;width:18px;height:13px}
+  .petals i:nth-child(6){left:87%;animation-duration:16s;animation-delay:6s;width:12px;height:9px}
 
   /* парящие золотые искры в шапке */
   .hero-sparks{position:absolute;inset:0;overflow:hidden;pointer-events:none}
@@ -217,6 +250,12 @@
   }
   .band::before{top:22px}
   .band::after{bottom:22px}
+  .band-flora{
+    position:absolute;width:clamp(150px,38vw,230px);height:auto;
+    color:#F6ECD8;opacity:.16;pointer-events:none;
+  }
+  .bf-tl{top:-8px;left:-12px;transform:scaleY(-1)}
+  .bf-br{bottom:-8px;right:-12px;transform:scaleX(-1)}
   .band-mark{
     position:absolute;left:50%;top:50%;
     width:min(480px,120vw);height:auto;
@@ -323,7 +362,10 @@
     position:fixed;inset:0;z-index:100;
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
     padding:24px;
-    background:radial-gradient(closest-side at 50% 45%,#FEFCF8 0%,var(--boz) 100%);
+    background:
+      radial-gradient(44vw 34vh at 14% 20%,rgba(233,199,170,.2) 0%,transparent 70%),
+      radial-gradient(46vw 36vh at 88% 78%,rgba(226,203,158,.24) 0%,transparent 70%),
+      radial-gradient(closest-side at 50% 45%,#FEFCF8 0%,var(--boz) 100%);
     transition:opacity .85s ease .1s,visibility .95s;
   }
   .env-screen.gone{opacity:0;visibility:hidden;pointer-events:none}
@@ -396,6 +438,13 @@
   }
   .env.open .env-seal{opacity:0;transform:translate(-50%,-50%) scale(.55) rotate(-14deg)}
   .env-seal svg{width:38px}
+  .env-seal::after{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.65) 50%,transparent 68%);
+    background-size:240% 240%;
+    animation:sheen 5.5s ease-in-out infinite;
+  }
+  @keyframes sheen{0%{background-position:210% 0}55%,100%{background-position:-90% 0}}
 
   /* ── Появление секций при скролле ─────────── */
   .reveal{
@@ -500,7 +549,9 @@
     .anim,.scroll-cue,body.opened .anim,body.opened .scroll-cue{animation:none;opacity:1}
     .tk-draw,body.opened .tk-draw{animation:none;stroke-dashoffset:0}
     .reveal{opacity:1;transform:none;transition:none}
-    .hero-sparks{display:none}
+    .hero-sparks,.petals{display:none}
+    #name-main{animation:none}
+    .env-seal::after{animation:none;display:none}
     .cd-num.tick{animation:none}
     .row,.cd-cell{opacity:1;transform:none;transition:none}
     .reveal .sprig,.reveal h2,.reveal .verse,.reveal p,.reveal .cal,
@@ -518,6 +569,9 @@
 
 <!-- ═══ КОНВЕРТ (заставка) ═══ -->
 <div class="env-screen" id="env-screen">
+  <svg class="flora f-tl" viewBox="0 0 220 260" fill="none" aria-hidden="true"><use href="#branch-src"/></svg>
+  <svg class="flora f-br" viewBox="0 0 220 260" fill="none" aria-hidden="true"><use href="#branch-src"/></svg>
+  <div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <p class="env-title" id="env-title"><span class="env-t-main">Сизге чакыруу келди</span><small>Сезим · Кыз узатуу тою</small></p>
   <button class="env" id="envelope" type="button" aria-label="Конвертти ачуу">
     <span class="env-back"></span>
@@ -540,6 +594,7 @@
 <!-- ═══ HERO ═══ -->
 <header class="hero">
   <div class="hero-sparks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <svg class="flora f-tl" viewBox="0 0 220 260" fill="none" aria-hidden="true"><use href="#branch-src"/></svg>
   <svg class="flora f-br" viewBox="0 0 220 260" fill="none" aria-hidden="true"><use href="#branch-src"/></svg>
 
@@ -592,6 +647,8 @@
 
 <!-- ═══ ОБРАТНЫЙ ОТСЧЁТ ═══ -->
 <section class="band reveal" id="countdown">
+  <svg class="band-flora bf-tl" viewBox="0 0 220 260" fill="none" aria-hidden="true"><use href="#branch-src"/></svg>
+  <svg class="band-flora bf-br" viewBox="0 0 220 260" fill="none" aria-hidden="true"><use href="#branch-src"/></svg>
   <svg class="band-mark" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
   <div class="wrap">
     <svg class="sprig" viewBox="0 0 120 32" fill="none" aria-hidden="true"><use href="#sprig-src"/></svg>
@@ -608,6 +665,8 @@
 
 <!-- ═══ АК БАТА (показывается вместо отсчёта в режиме съёмки ?video) ═══ -->
 <section class="band blessing reveal">
+  <svg class="band-flora bf-tl" viewBox="0 0 220 260" fill="none" aria-hidden="true"><use href="#branch-src"/></svg>
+  <svg class="band-flora bf-br" viewBox="0 0 220 260" fill="none" aria-hidden="true"><use href="#branch-src"/></svg>
   <svg class="band-mark" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
   <div class="wrap">
     <svg class="sprig" viewBox="0 0 120 32" fill="none" aria-hidden="true"><use href="#sprig-src"/></svg>
@@ -654,6 +713,8 @@
 
 <!-- ═══ RSVP ═══ -->
 <section class="band rsvp reveal">
+  <svg class="band-flora bf-tl" viewBox="0 0 220 260" fill="none" aria-hidden="true"><use href="#branch-src"/></svg>
+  <svg class="band-flora bf-br" viewBox="0 0 220 260" fill="none" aria-hidden="true"><use href="#branch-src"/></svg>
   <svg class="band-mark" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
   <div class="wrap">
     <svg class="sprig" viewBox="0 0 120 32" fill="none" aria-hidden="true"><use href="#sprig-src"/></svg>
@@ -906,8 +967,9 @@ function startAutoScroll() {
   let i = 0;
   const go = () => {
     if (i >= tops.length) return;
-    targets[i].classList.add("visible");   // каскад стартует вместе с проездом:
-                                            // к остановке секция уже собрана
+    // каскад стартует на 65% пути: секция въезжает в кадр и оживает на глазах
+    const sec = targets[i];
+    setTimeout(() => sec.classList.add("visible"), TRAVEL * 0.65);
     stage.style.transition = "transform " + TRAVEL + "ms cubic-bezier(.5,.02,.15,1)";
     stage.style.transform = "translate3d(0," + (-tops[i]) + "px,0)";
     let fired = false;
