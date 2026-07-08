@@ -865,7 +865,7 @@ if (videoMode) {
 function startAutoScroll() {
   const targets = [".invite", ".blessing", ".details", ".program", "footer"]
     .map(s => document.querySelector(s)).filter(Boolean);
-  const TRAVEL = 2550, DWELL = 3900;   // мс: проезд между секциями и пауза на секции
+  const TRAVEL = 3200, DWELL = 4800;   // мс: проезд между секциями и пауза на секции
   // smootherstep: нулевая скорость и ускорение на концах — без рывков и дрожи
   const ease = u => u <= 0 ? 0 : u >= 1 ? 1 : u * u * u * (u * (6 * u - 15) + 10);
   let i = 0;
