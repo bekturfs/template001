@@ -602,7 +602,7 @@
 </footer>
 
 <!-- ═══ МУЗЫКА ═══ -->
-<audio id="bg-music" loop preload="auto"></audio>
+<audio id="bg-music" preload="auto"></audio>
 <button class="music-btn" id="music-btn" type="button" aria-label="Музыканы күйгүзүү / өчүрүү">
   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path d="M9 18 V6 L20 4 V16" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -675,6 +675,7 @@ const CONFIG = {
   music: "music.mp3",
   musicVolume: 0.75,      // целевая громкость (0…1)
   musicFadeSec: 8,        // за сколько секунд нарастает звук
+  musicStartAt: 13,       // с какой секунды трека начинать (пропуск тихого вступления)
 
   program: [
     ["13:00", "Конокторду тосуу"],
@@ -782,6 +783,9 @@ function startMusic() {
   setupAudioGraph();
   if (actx && actx.state === "suspended") actx.resume().catch(() => {});
   music.volume = gainNode ? 1 : 0;
+  try {
+    if (music.currentTime < CONFIG.musicStartAt) music.currentTime = CONFIG.musicStartAt;
+  } catch (e) {}
   music.play().then(() => {
     fadeInMusic();
     musicBtn.classList.add("playing");
@@ -796,6 +800,11 @@ if (CONFIG.music) {
   music.src = CONFIG.music;
   music.addEventListener("canplay", () => musicBtn.classList.add("ready"), { once: true });
   music.addEventListener("error", () => musicBtn.classList.remove("ready"));
+  // зацикливание вручную, чтобы каждый круг начинался с musicStartAt, а не с тихого начала
+  music.addEventListener("ended", () => {
+    music.currentTime = CONFIG.musicStartAt;
+    music.play().catch(() => {});
+  });
   musicBtn.addEventListener("click", () => music.paused ? startMusic() : stopMusic());
 }
 
