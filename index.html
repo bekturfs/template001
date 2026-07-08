@@ -311,7 +311,7 @@
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
     padding:24px;
     background:radial-gradient(closest-side at 50% 45%,#FBF7ED 0%,var(--boz) 100%);
-    transition:opacity .7s ease,visibility .7s;
+    transition:opacity .85s ease .1s,visibility .95s;
   }
   .env-screen.gone{opacity:0;visibility:hidden;pointer-events:none}
   .env-title{
@@ -344,6 +344,15 @@
     transition:transform .8s cubic-bezier(.22,.61,.36,1) .4s;
   }
   .env.open .env-letter{transform:translateY(-36%)}
+  /* финал: письмо вырастает на весь экран и «становится» страницей */
+  .env-screen.gone .env-letter{
+    transform:translateY(-44%) scale(4.6);
+    opacity:0;
+    transition:transform .95s cubic-bezier(.5,0,.15,1),opacity .8s ease .15s;
+  }
+  .env-screen.gone .env-flap,.env-screen.gone .env-back,.env-screen.gone .env-pocket{
+    opacity:0;transition:opacity .45s ease;
+  }
   .env-letter svg{width:30px;color:var(--altyn)}
   .l-eyebrow{font-size:.58rem;font-weight:600;letter-spacing:.28em;text-indent:.28em;text-transform:uppercase;color:var(--kyzyl)}
   .l-name{font-family:var(--serif);font-size:1.65rem;line-height:1.1}
