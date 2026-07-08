@@ -1,877 +1,501 @@
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, height=device-height, initial-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- <script src="cdn-cgi/apps/head/head.js"></script> -->
-    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//fonts.googleapis.com/css?family=Poppins:300,300i,400,500,600,700,800,900,900i%7CRoboto:400%7CRubik:100,400,700"
-    />
-    <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/fonts.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <style>
-      .ie-panel {
-        display: none;
-        background: #212121;
-        padding: 10px 0;
-        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
-        clear: both;
-        text-align: center;
-        position: relative;
-        z-index: 1;
-      }
-      html.ie-10 .ie-panel,
-      html.lt-ie-10 .ie-panel {
-        display: block;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="ie-panel">
-      <a href="https://windows.microsoft.com/en-US/internet-explorer/"
-        ><img
-          src="images/ie8-panel/warning_bar_0000_us.jpg"
-          height="42"
-          width="820"
-          alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."
-      /></a>
-    </div>
-    <div class="preloader">
-      <div class="preloader-body">
-        <div class="cssload-container">
-          <div class="cssload-speeding-wheel"></div>
-        </div>
-        <p>Loading...</p>
-      </div>
-    </div>
-    <div class="page">
-      <!-- Page Header-->
-      <header class="section page-header">
-        <!-- RD Navbar-->
-        <div class="rd-navbar-wrap">
-          <nav
-            class="rd-navbar rd-navbar-aside"
-            data-layout="rd-navbar-fix~ed"
-            data-sm-layout="rd-navbar-fixed"
-            data-md-layout="rd-navbar-fixed"
-            data-md-device-layout="rd-navbar-fixed"
-            data-lg-layout="rd-navbar-static"
-            data-lg-device-layout="rd-navbar-static"
-            data-xl-layout="rd-navbar-static"
-            data-xl-device-layout="rd-navbar-static"
-            data-lg-stick-up-offset="46px"
-            data-xl-stick-up-offset="46px"
-            data-xxl-stick-up-offset="46px"
-            data-lg-stick-up="true"
-            data-xl-stick-up="true"
-            data-xxl-stick-up="true"
-          >
-            <div class="rd-navbar-main-outer">
-              <div class="rd-navbar-main">
-                <!-- RD Navbar Panel-->
-                <div class="rd-navbar-panel">
-                  <!-- RD Navbar Toggle-->
-                  <button
-                    class="rd-navbar-toggle"
-                    data-rd-navbar-toggle=".rd-navbar-nav-wrap"
-                  >
-                    <span></span>
-                  </button>
-                  <!-- RD Navbar Brand-->
-                  <div class="rd-navbar-brand">
-                    <a href="index.html"
-                      ><img
-                        class="brand-logo-light"
-                        src="images/logo-inverse-173x52.png"
-                        alt=""
-                        width="173"
-                        height="52"
-                        srcset="images/logo-inverse-346x103.png 2x"
-                    /></a>
-                  </div>
-                  <div class="block-right">
-                    <ul class="list-inline nav-list">
-                      <li class="list-inline-item">
-                        <a href="about-us.html">About</a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="gallery.html">Gallery </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="news-2.html">News </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="contacts.html">contacts </a>
-                      </li>
-                    </ul>
-                    <div
-                      class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1"
-                      data-rd-navbar-toggle=".rd-navbar-collapse"
-                    >
-                      <span></span>
-                    </div>
-                    <div class="rd-navbar-aside-outer rd-navbar-collapse">
-                      <div class="rd-navbar-aside">
-                        <ul class="list-inline header-soc-list">
-                          <li><a class="icon fa-facebook" href="#"></a></li>
-                          <li><a class="icon fa-instagram" href="#"></a></li>
-                          <li><a class="icon fa-twitter" href="#"></a></li>
-                          <li><a class="icon fa-youtube-play" href="#"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="rd-navbar-main-element">
-                  <div class="rd-navbar-nav-wrap">
-                    <!-- RD Navbar Nav-->
-                    <ul class="rd-navbar-nav">
-                      <li class="rd-nav-item active">
-                        <a class="rd-nav-link" href="index.html">Home</a>
-                      </li>
-                      <li class="rd-nav-item">
-                        <a class="rd-nav-link" href="about-us.html">About Us</a>
-                      </li>
-                      <li class="rd-nav-item">
-                        <a class="rd-nav-link" href="news-2.html">News</a>
-                      </li>
-                      <li class="rd-nav-item">
-                        <a class="rd-nav-link" href="gallery.html">Gallery</a>
-                      </li>
-                      <li class="rd-nav-item">
-                        <a class="rd-nav-link" href="contacts.html">Contacts</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-      <!-- Swiper-->
-      <section
-        class="section section-lg section-main-bunner section-main-bunner-filter"
-      >
-        <div
-          class="main-bunner-img"
-          style="
-            background-image: url('images/bg-bunner-2.jpg');
-            background-size: cover;
-          "
-        ></div>
-        <div class="main-bunner-inner">
-          <div class="container">
-            <div
-              class="row row-50 justify-content-lg-center align-items-lg-center"
-            >
-              <div class="col-lg-12">
-                <div class="bunner-content-modern text-center">
-                  <h1 class="main-bunner-title">Help The Children</h1>
-                  <p>
-                    We do whatever it takes to make sure children don’t just
-                    survive but thrive. Helper believes that every child should
-                    be able to make their mark on their world and help build a
-                    better future.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="section section-xl">
-        <div class="container">
-          <div
-            class="row row-50 justify-content-lg-between align-items-lg-center"
-          >
-            <div class="col-lg-6">
-              <div class="box-img-animate">
-                <div
-                  class="box-img-animate-item"
-                  data-parallax-scroll='{"y": 0, "x": 140,  "smoothness": 50 }'
-                >
-                  <img src="images/animate-img-1.jpg" alt="" />
-                </div>
-                <div
-                  class="box-img-animate-item"
-                  data-parallax-scroll='{"y": 150, "x": 0,  "smoothness": 50 }'
-                >
-                  <img src="images/animate-img-2.jpg" alt="" />
-                </div>
-                <div
-                  class="box-img-animate-item"
-                  data-parallax-scroll='{"y":70, "x": -250,  "smoothness": 50 }'
-                >
-                  <img src="images/animate-img-3.jpg" alt="" />
-                </div>
-                <div
-                  class="box-img-animate-item"
-                  data-parallax-scroll='{"y":20, "x": 20,  "smoothness": 50 }'
-                >
-                  <img src="images/animate-img-4.jpg" alt="" />
-                </div>
-                <div
-                  class="box-img-animate-item"
-                  data-parallax-scroll='{"y":60, "x": 70,  "smoothness": 50 }'
-                >
-                  <img src="images/animate-img-5.jpg" alt="" />
-                </div>
-                <div
-                  class="box-img-animate-item"
-                  data-parallax-scroll='{"y":0, "x": 140,  "smoothness": 50 }'
-                >
-                  <img src="images/animate-img-6.jpg" alt="" />
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-xl-5">
-              <div class="innset-xl-left-70">
-                <h3>Our Mission</h3>
-                <p class="text-opacity-80">
-                  Our organization pursues several goals that can be identified
-                  as our mission. Learn more about them below.
-                </p>
-                <div class="row row-50">
-                  <div class="col-md-6 col-lg-12">
-                    <div class="box-icon-modern">
-                      <div class="box-icon-inner decorate-triangle">
-                        <span
-                          class="icon-xl linearicons-baby2 icon-primary"
-                        ></span>
-                      </div>
-                      <div class="box-icon-caption">
-                        <h4><a href="#">Saving Children</a></h4>
-                        <p>
-                          Our main mission is to save and rescue permanently
-                          displaced children.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-12">
-                    <div class="box-icon-modern">
-                      <div class="box-icon-inner decorate-circle">
-                        <span
-                          class="icon-xl linearicons-sun icon-primary"
-                        ></span>
-                      </div>
-                      <div class="box-icon-caption">
-                        <h4><a href="#">Peace On The Planet</a></h4>
-                        <p>
-                          By working with our partners, we aim to establish
-                          peaceful relationships.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-12">
-                    <div class="box-icon-modern">
-                      <div class="box-icon-inner decorate-rectangle">
-                        <span
-                          class="icon-xl linearicons-umbrella2 icon-primary"
-                        ></span>
-                      </div>
-                      <div class="box-icon-caption">
-                        <h4><a href="#">Care &amp; Protection</a></h4>
-                        <p>
-                          We provide global care and protection to support
-                          children all over the world.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="section section-lg bg-gray-1">
-        <div class="container">
-          <div class="row justify-content-center text-center">
-            <div class="col-md-9 col-lg-7 wow-outer">
-              <div class="wow slideInDown">
-                <h3>Latest Causes</h3>
-                <p>
-                  At Helper, there are various charity causes and projects, in
-                  which you can always take part. Feel free to learn about them
-                  below or browse our website for more information.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="row row-50">
-            <div class="col-md-6 col-lg-4 wow-outer">
-              <div class="wow fadeInUp">
-                <article class="box-causes">
-                  <div class="box-causes-img">
-                    <img
-                      src="images/causes-01-372x396.jpg"
-                      alt=""
-                      width="372"
-                      height="396"
-                    /><a
-                      class="button button-sm button-primary"
-                      href="single-cause-page.html"
-                      >Donate</a
-                    >
-                  </div>
-                  <h4 class="font-weight-medium">
-                    <a href="single-cause-page.html">Recycling for Charity</a>
-                  </h4>
-                  <p class="box-causes-donate">
-                    <span class="box-causes-donate-complete">$92,160</span> of
-                    <span>$100,000</span> raised
-                  </p>
-                </article>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow-outer">
-              <div class="wow fadeInUp">
-                <article class="box-causes">
-                  <div class="box-causes-img">
-                    <img
-                      src="images/causes-02-372x396.jpg"
-                      alt=""
-                      width="372"
-                      height="396"
-                    /><a
-                      class="button button-sm button-primary"
-                      href="single-cause-page.html"
-                      >Donate</a
-                    >
-                  </div>
-                  <h4 class="font-weight-medium">
-                    <a href="single-cause-page.html">Clean Water For People</a>
-                  </h4>
-                  <p class="box-causes-donate">
-                    <span class="box-causes-donate-complete">$52,380</span> of
-                    <span>$55,000</span> raised
-                  </p>
-                </article>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow-outer">
-              <div class="wow fadeInUp">
-                <article class="box-causes">
-                  <div class="box-causes-img">
-                    <img
-                      src="images/causes-03-372x396.jpg"
-                      alt=""
-                      width="372"
-                      height="396"
-                    /><a
-                      class="button button-sm button-primary"
-                      href="single-cause-page.html"
-                      >Donate</a
-                    >
-                  </div>
-                  <h4 class="font-weight-medium">
-                    <a href="single-cause-page.html">Children’s Education</a>
-                  </h4>
-                  <p class="box-causes-donate">
-                    <span class="box-causes-donate-complete">$42,280</span> of
-                    <span>$45,000</span> raised
-                  </p>
-                </article>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="section section-xxl bg-default">
-        <div class="container">
-          <div class="row row-50 justify-content-center align-items-lg-center">
-            <div class="col-lg-6 col-xl-5 wow-outer">
-              <div class="wow slideInLeft">
-                <img
-                  src="images/about-01-471x327.jpg"
-                  alt=""
-                  width="471"
-                  height="327"
-                />
-              </div>
-            </div>
-            <div class="col-lg-6 col-xl-5 wow-outer">
-              <div class="wow slideInRight">
-                <h3>About Helper</h3>
-                <p>
-                  Our charity organization was founded in 1994 based on the
-                  acute need to raise money for disadvantaged and at-risk
-                  children.
-                </p>
-                <p>
-                  Helper Charity steps in where health care ends, providing
-                  direct help to children with special needs. For over 30 years,
-                  we have ensured that children have the support to reach their
-                  potential and thrive. Since our foundation, we have
-                  distributed more than $30 million in funding to families and
-                  organizations in communities.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section
-        class="parallax-container"
-        data-parallax-img="images/parallax-img-1.jpg"
-      >
-        <div class="parallax-content section-xl context-dark text-center">
-          <div class="container">
-            <div class="row justify-content-md-center">
-              <div class="col-md-10 wow-outer">
-                <div class="wow fadeInUp">
-                  <h3>Help the Global Cause</h3>
-                  <a
-                    class="button button-lg button-primary"
-                    href="single-cause-page.html"
-                    >DONATE NOW</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="section-lg bg-default">
-        <div class="container wow-outer">
-          <h3 class="text-center wow slideInDown">Recent News</h3>
-          <!-- Owl Carousel-->
-          <div
-            class="owl-carousel owl-dots-primary wow fadeInUp"
-            data-items="1"
-            data-md-items="2"
-            data-lg-items="3"
-            data-dots="true"
-            data-nav="false"
-            data-stage-padding="0px"
-            data-loop="false"
-            data-margin="15px"
-            data-mouse-drag="false"
-          >
-            <div class="post-corporate">
-              <a class="badge" href="#">Jun 02, 2019</a>
-              <h4 class="post-corporate-title">
-                <a href="blog-post.html"
-                  >Are We Delivering On The Promise To Reach Every Child?</a
-                >
-              </h4>
-              <div class="post-corporate-text">
-                <p>
-                  Last week over 300 people from across the Gavi Alliance came
-                  together in Abu Dhabi to discuss progress and challenges at
-                  the mid-point of...
-                </p>
-              </div>
-              <a class="post-corporate-link" href="blog-post.html"
-                >Read more<span class="icon linearicons-arrow-right"></span
-              ></a>
-            </div>
-            <div class="post-corporate">
-              <a class="badge" href="#">Jul 21, 2019</a>
-              <h4 class="post-corporate-title">
-                <a href="blog-post.html"
-                  >Coaching for Fundraisers Winner Announced</a
-                >
-              </h4>
-              <div class="post-corporate-text">
-                <p>
-                  We are delighted to announce that Yvonne Edouke, founder of
-                  OrphanCare charity organization, has won our coaching prize.
-                  Her dedication to the...
-                </p>
-              </div>
-              <a class="post-corporate-link" href="blog-post.html"
-                >Read more<span class="icon linearicons-arrow-right"></span
-              ></a>
-            </div>
-            <div class="post-corporate">
-              <a class="badge" href="#">Aug 02, 2019</a>
-              <h4 class="post-corporate-title">
-                <a href="blog-post.html"
-                  >Equity And Care Through Universal Health Coverage</a
-                >
-              </h4>
-              <div class="post-corporate-text">
-                <p>
-                  Today, Universal Health Coverage (UHC) Day, the Universal
-                  Motherhood exhibition – created by NeuMette and supported by
-                  Helper...
-                </p>
-              </div>
-              <a class="post-corporate-link" href="blog-post.html"
-                >Read more<span class="icon linearicons-arrow-right"></span
-              ></a>
-            </div>
-            <div class="post-corporate">
-              <a class="badge" href="#">Sep 02, 2019</a>
-              <h4 class="post-corporate-title">
-                <a href="blog-post.html"
-                  >How Are Charities With National Offices &amp; Chapters
-                  Rated?</a
-                >
-              </h4>
-              <div class="post-corporate-text">
-                <p>
-                  Our visitors often ask us, "is the rating provided for a
-                  charity located in one state applicable to the charity's
-                  operations in other states?" And our...
-                </p>
-              </div>
-              <a class="post-corporate-link" href="blog-post.html"
-                >Read more<span class="icon linearicons-arrow-right"></span
-              ></a>
-            </div>
-            <div class="post-corporate">
-              <a class="badge" href="#">Oct 21, 2019</a>
-              <h4 class="post-corporate-title">
-                <a href="blog-post.html"
-                  >How to Report Charity Fraud: 3 Easy Steps to Remember</a
-                >
-              </h4>
-              <div class="post-corporate-text">
-                <p>
-                  The Charity Commission’s reporting on its compliance and
-                  investigations work, indicate that the largest proportion of
-                  the reports of serious...
-                </p>
-              </div>
-              <a class="post-corporate-link" href="blog-post.html"
-                >Read more<span class="icon linearicons-arrow-right"></span
-              ></a>
-            </div>
-            <div class="post-corporate">
-              <a class="badge" href="#">Nov 02, 2018</a>
-              <h4 class="post-corporate-title">
-                <a href="blog-post.html"
-                  >Volunteering for Children in Africa: Personal Experience</a
-                >
-              </h4>
-              <div class="post-corporate-text">
-                <p>
-                  I’ve been volunteering in Africa for the past two years, and
-                  have come across dozens of others out here doing the same
-                  thing, either with Peace...
-                </p>
-              </div>
-              <a class="post-corporate-link" href="blog-post.html"
-                >Read more<span class="icon linearicons-arrow-right"></span
-              ></a>
-            </div>
-            <div class="post-corporate">
-              <a class="badge" href="#">Nov 25, 2019</a>
-              <h4 class="post-corporate-title">
-                <a href="blog-post.html"
-                  >Navigating The Complex Childcare System
-                </a>
-              </h4>
-              <div class="post-corporate-text">
-                <p>
-                  The childcare landscape in the world is complex, with a wide
-                  variety of support available to parents depending on factors
-                  such as income, child’s age...
-                </p>
-              </div>
-              <a class="post-corporate-link" href="blog-post.html"
-                >Read more<span class="icon linearicons-arrow-right"></span
-              ></a>
-            </div>
-            <div class="post-corporate">
-              <a class="badge" href="#">Dec 12, 2018</a>
-              <h4 class="post-corporate-title">
-                <a href="blog-post.html"
-                  >Calling On World Leaders To Stop Children Starving</a
-                >
-              </h4>
-              <div class="post-corporate-text">
-                <p>
-                  In less than four years of war we’ve been sent back a century.
-                  There are the endless airstrikes. The bombs that fall from the
-                  skies every night as...
-                </p>
-              </div>
-              <a class="post-corporate-link" href="blog-post.html"
-                >Read more<span class="icon linearicons-arrow-right"></span
-              ></a>
-            </div>
-            <div class="post-corporate">
-              <a class="badge" href="#">Dec 21, 2018</a>
-              <h4 class="post-corporate-title">
-                <a href="blog-post.html"
-                  >Celebrating Success At Helper Charity Organization</a
-                >
-              </h4>
-              <div class="post-corporate-text">
-                <p>
-                  At times it can feel like nothing we give is ever enough, and
-                  that no matter how much we care, we can’t make a difference.
-                  Although this couldn’t be...
-                </p>
-              </div>
-              <a class="post-corporate-link" href="blog-post.html"
-                >Read more<span class="icon linearicons-arrow-right"></span
-              ></a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section
-        class="parallax-container"
-        data-parallax-img="images/parallax-img-2.jpg"
-      >
-        <div class="parallax-content section-xxl context-dark text-center">
-          <div class="container">
-            <div class="row justify-content-md-center">
-              <div class="col-md-9 col-lg-8 col-xl-8 wow-outer">
-                <div class="innset-xl-right-30 innset-xl-left-30">
-                  <div class="wow slideInDown">
-                    <h3>Subscribe to Stay Informed</h3>
-                    <form
-                      class="rd-form rd-mailform rd-form-inline"
-                      data-form-output="form-output-global"
-                      data-form-type="subscribe"
-                      method="post"
-                      action="bat/rd-mailform.php"
-                    >
-                      <div class="form-wrap">
-                        <input
-                          class="form-input"
-                          id="subscribe-form-email"
-                          type="email"
-                          name="email"
-                          data-constraints="@Email @Required"
-                        />
-                        <label class="form-label" for="subscribe-form-email"
-                          >Your E-mail</label
-                        >
-                      </div>
-                      <div class="form-button">
-                        <button
-                          class="button button-primary button-lg"
-                          type="submit"
-                        >
-                          Subscribe
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="section-lg text-center">
-        <div class="container">
-          <div class="wow-outer">
-            <div class="wow slideInDown">
-              <h3>Partners</h3>
-            </div>
-          </div>
-          <!-- Owl Carousel-->
-          <div
-            class="owl-carousel owl-dots-primary dots-offset-lg owl-carousel-lg"
-            data-items="1"
-            data-sm-items="2"
-            data-dots-each="2"
-            data-lg-items="4"
-            data-dots="true"
-            data-nav="false"
-            data-stage-padding="0"
-            data-loop="false"
-            data-margin="30"
-            data-mouse-drag="false"
-          >
-            <a class="box-sponsor box-sponsor-modern wow-outer" href="#">
-              <div class="wow fadeInUp">
-                <img
-                  src="images/logo-1-270x121.png"
-                  alt=""
-                  width="270"
-                  height="121"
-                /></div></a
-            ><a class="box-sponsor box-sponsor-modern wow-outer" href="#">
-              <div class="wow fadeInUp">
-                <img
-                  src="images/logo-2-270x121.png"
-                  alt=""
-                  width="270"
-                  height="121"
-                /></div></a
-            ><a class="box-sponsor box-sponsor-modern wow-outer" href="#">
-              <div class="wow fadeInUp">
-                <img
-                  src="images/logo-3-270x121.png"
-                  alt=""
-                  width="270"
-                  height="121"
-                /></div></a
-            ><a class="box-sponsor box-sponsor-modern wow-outer" href="#">
-              <div class="wow fadeInUp">
-                <img
-                  src="images/logo-4-270x121.png"
-                  alt=""
-                  width="270"
-                  height="121"
-                /></div></a
-            ><a class="box-sponsor box-sponsor-modern wow-outer" href="#">
-              <div class="wow fadeInUp">
-                <img
-                  src="images/logo-1-270x121.png"
-                  alt=""
-                  width="270"
-                  height="121"
-                /></div></a
-            ><a class="box-sponsor box-sponsor-modern wow-outer" href="#">
-              <div class="wow fadeInUp">
-                <img
-                  src="images/logo-2-270x121.png"
-                  alt=""
-                  width="270"
-                  height="121"
-                /></div></a
-            ><a class="box-sponsor box-sponsor-modern wow-outer" href="#">
-              <div class="wow fadeInUp">
-                <img
-                  src="images/logo-3-270x121.png"
-                  alt=""
-                  width="270"
-                  height="121"
-                /></div></a
-            ><a class="box-sponsor box-sponsor-modern wow-outer" href="#">
-              <div class="wow fadeInUp">
-                <img
-                  src="images/logo-4-270x121.png"
-                  alt=""
-                  width="270"
-                  height="121"
-                /></div
-            ></a>
-          </div>
-        </div>
-      </section>
-      <!-- Page Footer-->
-      <footer class="section footer-minimal context-dark">
-        <div class="container wow-outer">
-          <div class="wow fadeIn">
-            <div class="row row-50 row-lg-60">
-              <div class="col-12">
-                <a href="index.html"
-                  ><img
-                    src="images/logo-inverse-173x52.png"
-                    alt=""
-                    width="173"
-                    height="52"
-                    srcset="images/logo-inverse-346x103.png 2x"
-                /></a>
-              </div>
-              <div class="col-12">
-                <ul class="footer-minimal-nav">
-                  <li><a href="about-us.html">About Us</a></li>
-                  <li><a href="causes.html">Causes</a></li>
-                  <li><a href="gallery.html">Gallery</a></li>
-                  <li><a href="team.html">Team</a></li>
-                  <li><a href="contacts.html">Contacts</a></li>
-                </ul>
-              </div>
-              <div class="col-12">
-                <ul class="social-list">
-                  <li>
-                    <a
-                      class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-facebook"
-                      href="#"
-                    ></a>
-                  </li>
-                  <li>
-                    <a
-                      class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-instagram"
-                      href="#"
-                    ></a>
-                  </li>
-                  <li>
-                    <a
-                      class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-twitter"
-                      href="#"
-                    ></a>
-                  </li>
-                  <li>
-                    <a
-                      class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-youtube-play"
-                      href="#"
-                    ></a>
-                  </li>
-                  <li>
-                    <a
-                      class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-pinterest-p"
-                      href="#"
-                    ></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <p class="rights">
-              <span>&copy;&nbsp;</span><span class="copyright-year"></span
-              ><span>&nbsp;</span><span>Helper</span><span>.&nbsp;</span
-              ><a href="privacy-policy.html">Privacy Policy</a>
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
-    <div class="snackbars" id="form-output-global"></div>
-    <script src="js/core.min.js"></script>
-    <script src="js/script.js"></script>
+<html lang="ky">
+<head>
+<!--
+  ══════════════════════════════════════════════════════════════
+  КАК ПОМЕНЯТЬ ДАННЫЕ (для Бектура):
+  1) Имена, дата, адрес, программа, WhatsApp — всё в одном блоке
+     CONFIG в конце файла (Ctrl+F "CONFIG"). Больше нигде править
+     не нужно, JS сам подставит везде.
+  2) Заголовок вкладки и превью ссылки в WhatsApp — <title> и
+     og:-теги ниже (краулеры JS не выполняют, поэтому руками).
+  3) Бесплатная ссылка (Cloudflare Pages, без git):
+     dash.cloudflare.com → Workers & Pages → Create → Pages →
+     Upload assets → перетащи папку с этим index.html → Deploy.
+     Обновить сайт: тот же проект → Create new deployment.
+  ══════════════════════════════════════════════════════════════
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Азамат &amp; Айдана — Үйлөнүү тою</title>
+<meta name="description" content="15-август, 2026 · Бишкек. Сиздерди үйлөнүү үлпөт тоюбузга чакырабыз!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Азамат & Айдана — Үйлөнүү тою">
+<meta property="og:description" content="15-август, 2026 · Бишкек. Сиздерди үйлөнүү үлпөт тоюбузга чакырабыз!">
+<meta name="theme-color" content="#B23F46">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='44'%20fill='none'%20stroke='%23B9862F'%20stroke-width='7'/%3E%3Cpath%20d='M20%2050%20H80%20M50%2020%20V80%20M28%2033%20Q50%2026%2072%2033%20M28%2067%20Q50%2074%2072%2067'%20stroke='%23B9862F'%20stroke-width='6'%20fill='none'%20stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!--LIVEDEMO_00 -->
+<style>
+  :root{
+    --boz:#F6F0E4;          /* ак кийиз — фон */
+    --boz-deep:#EEE4CF;
+    --kyzyl:#B23F46;        /* красный шырдака, светлее */
+    --kyzyl-deep:#98333C;
+    --altyn:#B9862F;        /* старое золото */
+    --altyn-soft:#D8B978;   /* бледное золото для тёмного фона */
+    --ink:#33231C;
+    --muted:#7C6A57;
+    --serif:'Noto Serif Display', Georgia, serif;
+    --sans:'Noto Sans', -apple-system, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    font-size:16px;line-height:1.7;
+    color:var(--ink);
+    background:var(--boz);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15}
+  a{color:inherit}
+  svg{display:block}
+  :focus-visible{outline:2.5px solid var(--altyn);outline-offset:3px;border-radius:4px}
 
-    <!-- <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(["_setAccount", "UA-7078796-5"]);
-      _gaq.push(["_trackPageview"]);
-      (function () {
-        var ga = document.createElement("script");
-        ga.type = "text/javascript";
-        ga.async = true;
-        ga.src =
-          ("https:" == document.location.protocol
-            ? "https://ssl"
-            : "https://www") + ".google-analytics.com/ga.js";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(ga, s);
-      })();
-    </script> -->
+  section{padding:76px 24px}
+  .wrap{max-width:640px;margin:0 auto;text-align:center}
+  h2{font-size:clamp(1.7rem,6vw,2.25rem);margin-bottom:14px}
 
-    <!-- Google Tag Manager --><noscript
-      ><iframe
-        src="//www.googletagmanager.com/ns.html?id=GTM-P9FT69"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "//www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-P9FT69");
-    </script> -->
-    <!-- End Google Tag Manager -->
-  </body>
+  /* ── HERO ─────────────────────────────────── */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:grid;place-content:center;
+    text-align:center;
+    padding:96px 34px;
+    background:radial-gradient(closest-side at 50% 42%,#FBF7ED 0%,var(--boz) 100%);
+  }
+  .corner{position:absolute;width:clamp(60px,12vw,104px);height:auto;color:var(--altyn);opacity:.9}
+  .c-tl{top:14px;left:14px}
+  .c-tr{top:14px;right:14px;transform:rotate(90deg)}
+  .c-br{bottom:14px;right:14px;transform:rotate(180deg)}
+  .c-bl{bottom:14px;left:14px;transform:rotate(270deg)}
+
+  .tunduk{width:clamp(72px,17vw,96px);height:auto;color:var(--altyn);margin:0 auto 26px}
+  .tk-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.6s ease .15s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+
+  .eyebrow{
+    font-size:.78rem;font-weight:600;
+    letter-spacing:.4em;text-indent:.4em;
+    text-transform:uppercase;color:var(--kyzyl);
+    margin-bottom:18px;
+  }
+  .names{
+    font-size:clamp(2.9rem,13vw,5.4rem);
+    letter-spacing:.01em;
+    display:grid;gap:.02em;
+  }
+  .names .amp{
+    font-style:italic;font-weight:400;
+    font-size:.42em;color:var(--altyn);
+    margin:.12em 0;
+  }
+  .hero .divider{width:clamp(210px,56vw,280px);margin:26px auto 22px;color:var(--altyn)}
+  .hero-date{
+    font-family:var(--serif);
+    font-size:clamp(1.02rem,3.6vw,1.25rem);
+    letter-spacing:.16em;text-indent:.16em;
+    text-transform:uppercase;
+  }
+  .hero-sub{color:var(--muted);font-size:.95rem;margin-top:8px;letter-spacing:.05em}
+  .hosts{color:var(--muted);font-size:.88rem;margin-top:26px;font-style:italic}
+
+  .scroll-cue{
+    position:absolute;left:50%;bottom:24px;
+    transform:translate(-50%,0);
+    color:var(--altyn);opacity:0;
+    animation:cueIn .9s ease 2.6s forwards, bob 2.2s ease-in-out 3.5s infinite;
+  }
+  @keyframes cueIn{to{opacity:.9}}
+  @keyframes bob{
+    0%,100%{transform:translate(-50%,0)}
+    50%{transform:translate(-50%,9px)}
+  }
+
+  /* появление элементов hero при загрузке */
+  .anim{opacity:0;animation:fadeUp .8s ease forwards}
+  .d1{animation-delay:1.0s}.d2{animation-delay:1.15s}.d3{animation-delay:1.45s}
+  .d4{animation-delay:1.65s}.d5{animation-delay:1.8s}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+  /* ── ПРИГЛАШЕНИЕ ──────────────────────────── */
+  .invite p{max-width:520px;margin:0 auto 16px;color:#4A382D;font-size:1.02rem}
+  .invite .divider{width:230px;margin:6px auto 26px;color:var(--altyn)}
+
+  /* ── ТЁМНО-КРАСНЫЕ ЛЕНТЫ ──────────────────── */
+  .band{
+    position:relative;overflow:hidden;
+    background:linear-gradient(180deg,var(--kyzyl) 0%,var(--kyzyl-deep) 100%);
+    color:var(--boz);
+    padding:96px 24px;
+  }
+  .band h2{color:var(--boz)}
+  .band::before,.band::after{
+    content:"";position:absolute;left:0;right:0;height:18px;
+    background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 18" fill="none" stroke="%23D8B978" stroke-linecap="round"><path d="M4 14 C4 6 10 3 16 3 C24 3 28 8 27 12 C26.2 15.2 22 16 20 13.6 C18.4 11.6 19.4 8.6 22 8.6" stroke-width="2.2"/><path d="M31 4 C38 4 44 7 44 14" stroke-width="2.2"/><circle cx="50" cy="14" r="1.8" fill="%23D8B978" stroke="none"/></svg>') repeat-x center / auto 15px;
+    opacity:.85;
+  }
+  .band::before{top:16px}
+  .band::after{bottom:16px;transform:scaleY(-1)}
+  .band-mark{
+    position:absolute;left:50%;top:50%;
+    width:min(480px,120vw);height:auto;
+    transform:translate(-50%,-50%);
+    color:var(--altyn-soft);opacity:.09;pointer-events:none;
+  }
+  .band .wrap{position:relative}
+
+  /* ── ОБРАТНЫЙ ОТСЧЁТ ──────────────────────── */
+  .cd-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:10px;max-width:460px;margin:30px auto 0;
+  }
+  .cd-cell{
+    background:rgba(246,240,228,.12);
+    border:1px solid rgba(216,185,120,.4);
+    border-radius:14px;padding:18px 4px 14px;
+  }
+  .cd-num{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(1.65rem,7.5vw,2.5rem);line-height:1;
+    font-variant-numeric:tabular-nums;
+  }
+  .cd-lbl{
+    font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--altyn-soft);margin-top:8px;
+  }
+  .cd-done{font-family:var(--serif);font-size:1.5rem;margin-top:26px}
+
+  /* ── КОГДА И ГДЕ ──────────────────────────── */
+  .details .divider{width:230px;margin:6px auto 30px;color:var(--altyn)}
+  .rows{max-width:440px;margin:0 auto;text-align:center}
+  .row{padding:18px 0;border-bottom:1px solid rgba(185,134,47,.28)}
+  .row:last-child{border-bottom:none}
+  .lbl{
+    display:block;font-size:.72rem;font-weight:600;
+    letter-spacing:.24em;text-indent:.24em;text-transform:uppercase;
+    color:var(--altyn);margin-bottom:5px;
+  }
+  .val{font-family:var(--serif);font-size:1.22rem}
+  .val small{display:block;font-family:var(--sans);font-size:.9rem;color:var(--muted);margin-top:3px}
+
+  /* ── КНОПКИ ───────────────────────────────── */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 28px;border-radius:12px;
+    font-weight:600;font-size:.95rem;letter-spacing:.02em;
+    text-decoration:none;transition:all .25s ease;
+  }
+  .btn svg{width:19px;height:19px;flex:none}
+  .btn-outline{border:1.5px solid var(--altyn);color:var(--ink);margin-top:30px}
+  .btn-outline:hover{background:rgba(185,134,47,.12)}
+  .btn-light{background:var(--boz);color:var(--kyzyl-deep);margin-top:28px;box-shadow:0 4px 18px rgba(0,0,0,.22)}
+  .btn-light:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(0,0,0,.3)}
+
+  /* ── ПРОГРАММА ────────────────────────────── */
+  .program .divider{width:230px;margin:6px auto 34px;color:var(--altyn)}
+  .timeline{list-style:none;max-width:340px;margin:0 auto;text-align:left;position:relative}
+  .timeline::before{
+    content:"";position:absolute;left:4.5px;top:8px;bottom:8px;
+    width:1.5px;background:rgba(185,134,47,.4);
+  }
+  .timeline li{position:relative;padding:0 0 26px 32px}
+  .timeline li:last-child{padding-bottom:0}
+  .timeline li::before{
+    content:"";position:absolute;left:0;top:7px;
+    width:10px;height:10px;background:var(--altyn);
+    transform:rotate(45deg);
+  }
+  .t-time{font-family:var(--serif);font-weight:600;font-size:1.08rem;color:var(--kyzyl)}
+  .t-name{color:#4A382D;margin-top:1px}
+
+  /* ── RSVP ─────────────────────────────────── */
+  .rsvp p{max-width:420px;margin:0 auto;color:rgba(246,240,228,.85)}
+
+  /* ── FOOTER ───────────────────────────────── */
+  footer{
+    padding:60px 24px 52px;text-align:center;
+    background:var(--boz-deep);
+    border-top:1px solid rgba(185,134,47,.3);
+  }
+  .foot-tunduk{width:46px;color:var(--altyn);margin:0 auto 18px}
+  .foot-line{font-family:var(--serif);font-size:clamp(1.25rem,5vw,1.6rem);max-width:420px;margin:0 auto}
+  .foot-names{color:var(--muted);font-size:.88rem;letter-spacing:.14em;text-transform:uppercase;margin-top:14px}
+
+  /* ── Появление секций при скролле ─────────── */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion:reduce){
+    .anim,.scroll-cue{animation:none;opacity:1}
+    .tk-draw{animation:none;stroke-dashoffset:0}
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <svg class="corner c-tl" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+    <path d="M118 10 H30 Q10 10 10 30 V118" stroke="currentColor" stroke-width="2.4"/>
+    <path d="M118 20 H36 Q20 20 20 36 V118" stroke="currentColor" stroke-width="1" opacity=".55"/>
+    <path d="M34 34 C46 26 60 30 62 42 C63.5 51 56 57 48.5 55.5 C43 54.4 40.5 49 42.5 44.5 C44 41 48.4 40 51 42.4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+  </svg>
+  <svg class="corner c-tr" viewBox="0 0 120 120" fill="none" aria-hidden="true"><use href="#corner-src"/></svg>
+  <svg class="corner c-br" viewBox="0 0 120 120" fill="none" aria-hidden="true"><use href="#corner-src"/></svg>
+  <svg class="corner c-bl" viewBox="0 0 120 120" fill="none" aria-hidden="true"><use href="#corner-src"/></svg>
+
+  <svg class="tunduk" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true">
+    <circle class="tk-draw" pathLength="1" cx="100" cy="100" r="88" stroke-width="6"/>
+    <circle class="tk-draw" pathLength="1" cx="100" cy="100" r="72" stroke-width="1.6"/>
+    <g stroke-width="5.5" stroke-linecap="round">
+      <path class="tk-draw" pathLength="1" d="M36.5 66 Q100 58 163.5 66"/>
+      <path class="tk-draw" pathLength="1" d="M28 100 H172"/>
+      <path class="tk-draw" pathLength="1" d="M36.5 134 Q100 142 163.5 134"/>
+      <path class="tk-draw" pathLength="1" d="M66 36.5 Q58 100 66 163.5"/>
+      <path class="tk-draw" pathLength="1" d="M100 28 V172"/>
+      <path class="tk-draw" pathLength="1" d="M134 36.5 Q142 100 134 163.5"/>
+    </g>
+  </svg>
+
+  <p class="eyebrow anim d1">Үйлөнүү тою</p>
+
+  <h1 class="names anim d2">
+    <span id="name-groom">Азамат</span>
+    <span class="amp" aria-hidden="true">&amp;</span>
+    <span id="name-bride">Айдана</span>
+  </h1>
+
+  <svg class="divider anim d3" viewBox="0 0 320 84" fill="none" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="3.4" stroke-linecap="round">
+      <path id="horn-src" d="M166 36 C196 18 232 22 240 46 C246 66 232 80 214 78 C200 76.5 192 66 194 54 C195.5 45 204 40 212 42.5 C218 44.5 221 50.5 219 56 C217.4 60.5 212.5 62.6 208.6 60.6"/>
+      <use href="#horn-src" transform="translate(320,0) scale(-1,1)"/>
+    </g>
+    <path d="M160 31 L171 42 L160 53 L149 42 Z" fill="currentColor"/>
+    <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+      <path d="M12 42 H70"/><path d="M250 42 H308"/>
+    </g>
+    <circle cx="12" cy="42" r="2.6" fill="currentColor"/>
+    <circle cx="308" cy="42" r="2.6" fill="currentColor"/>
+  </svg>
+
+  <p class="hero-date anim d4" id="hero-date">15-август, 2026-жыл</p>
+  <p class="hero-sub anim d4" id="hero-sub">ишемби · саат 17:00</p>
+  <p class="hosts anim d5" id="hosts"></p>
+
+  <svg class="scroll-cue" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M4 9 L12 17 L20 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</header>
+
+<!-- ═══ ПРИГЛАШЕНИЕ ═══ -->
+<section class="invite reveal">
+  <div class="wrap">
+    <h2>Урматтуу коноктор!</h2>
+    <svg class="divider" viewBox="0 0 320 84" fill="none" aria-hidden="true"><use href="#divider-src"/></svg>
+    <p>Биздин өмүрүбүздөгү эң маанилүү жана бактылуу күн жакындап калды. Сиздерди үйлөнүү үлпөт тоюбузга чын жүрөктөн чакырабыз.</p>
+    <p>Ушул кубанычтуу күндү биз менен бирге бөлүшсөңүздөр, биз үчүн чоң сыймык болот!</p>
+  </div>
+</section>
+
+<!-- ═══ ОБРАТНЫЙ ОТСЧЁТ ═══ -->
+<section class="band reveal">
+  <svg class="band-mark" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
+  <div class="wrap">
+    <h2>Тойго чейин калды</h2>
+    <div class="cd-grid" id="cd-grid">
+      <div class="cd-cell"><div class="cd-num" id="cd-d">—</div><div class="cd-lbl">Күн</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-h">—</div><div class="cd-lbl">Саат</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-m">—</div><div class="cd-lbl">Мүнөт</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-s">—</div><div class="cd-lbl">Секунд</div></div>
+    </div>
+    <p class="cd-done" id="cd-done" hidden>Күн келип жетти — бүгүн той! 🎉</p>
+  </div>
+</section>
+
+<!-- ═══ КОГДА И ГДЕ ═══ -->
+<section class="details reveal">
+  <div class="wrap">
+    <h2>Качан жана кайда</h2>
+    <svg class="divider" viewBox="0 0 320 84" fill="none" aria-hidden="true"><use href="#divider-src"/></svg>
+    <div class="rows">
+      <div class="row"><span class="lbl">Күнү</span><span class="val" id="det-date">15-август, 2026-жыл · ишемби</span></div>
+      <div class="row"><span class="lbl">Убактысы</span><span class="val" id="det-time">17:00</span></div>
+      <div class="row"><span class="lbl">Жери</span><span class="val" id="det-venue">«Алтын Ордо» той ордосу<small id="det-address">Бишкек ш., Ахунбаев көч., 123</small></span></div>
+    </div>
+    <a class="btn btn-outline" id="map-btn" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21.3 C12 21.3 5 15.7 5 10.2 A7 7 0 1 1 19 10.2 C19 15.7 12 21.3 12 21.3 Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+      Картадан ачуу
+    </a>
+  </div>
+</section>
+
+<!-- ═══ ПРОГРАММА ═══ -->
+<section class="program reveal">
+  <div class="wrap">
+    <h2>Той программасы</h2>
+    <svg class="divider" viewBox="0 0 320 84" fill="none" aria-hidden="true"><use href="#divider-src"/></svg>
+    <ul class="timeline" id="program-list"></ul>
+  </div>
+</section>
+
+<!-- ═══ RSVP ═══ -->
+<section class="band rsvp reveal">
+  <svg class="band-mark" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
+  <div class="wrap">
+    <h2>Катышууңузду тастыктаңыз</h2>
+    <p>Сураныч, катышууңузду <span id="rsvp-deadline">1-августка чейин</span> билдирип коюңуз — сиздерди жакшылап тосуп алалы.</p>
+    <a class="btn btn-light" id="wa-btn" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 11.6 C21 16.2 17 19.9 12.1 19.9 C10.7 19.9 9.4 19.6 8.2 19.1 L3.5 20.5 L5 16.4 C4 15 3.3 13.4 3.3 11.6 C3.3 7 7.3 3.3 12.1 3.3 C17 3.3 21 7 21 11.6 Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      WhatsApp аркылуу жазуу
+    </a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <svg class="foot-tunduk" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
+  <p class="foot-line">Сиздерди чыдамсыздык менен күтөбүз!</p>
+  <p class="foot-names" id="foot-names">Азамат &amp; Айдана · 2026</p>
+</footer>
+
+<!-- Скрытые исходники орнаментов для переиспользования через <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="corner-src">
+      <path d="M118 10 H30 Q10 10 10 30 V118" stroke="currentColor" stroke-width="2.4" fill="none"/>
+      <path d="M118 20 H36 Q20 20 20 36 V118" stroke="currentColor" stroke-width="1" opacity=".55" fill="none"/>
+      <path d="M34 34 C46 26 60 30 62 42 C63.5 51 56 57 48.5 55.5 C43 54.4 40.5 49 42.5 44.5 C44 41 48.4 40 51 42.4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    </g>
+    <g id="divider-src">
+      <g stroke="currentColor" stroke-width="3.4" stroke-linecap="round" fill="none">
+        <path d="M166 36 C196 18 232 22 240 46 C246 66 232 80 214 78 C200 76.5 192 66 194 54 C195.5 45 204 40 212 42.5 C218 44.5 221 50.5 219 56 C217.4 60.5 212.5 62.6 208.6 60.6"/>
+        <path d="M166 36 C196 18 232 22 240 46 C246 66 232 80 214 78 C200 76.5 192 66 194 54 C195.5 45 204 40 212 42.5 C218 44.5 221 50.5 219 56 C217.4 60.5 212.5 62.6 208.6 60.6" transform="translate(320,0) scale(-1,1)"/>
+      </g>
+      <path d="M160 31 L171 42 L160 53 L149 42 Z" fill="currentColor"/>
+      <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M12 42 H70"/><path d="M250 42 H308"/>
+      </g>
+      <circle cx="12" cy="42" r="2.6" fill="currentColor"/>
+      <circle cx="308" cy="42" r="2.6" fill="currentColor"/>
+    </g>
+    <g id="tunduk-src">
+      <circle cx="100" cy="100" r="88" stroke-width="6" fill="none"/>
+      <circle cx="100" cy="100" r="72" stroke-width="1.6" fill="none"/>
+      <g stroke-width="5.5" stroke-linecap="round" fill="none">
+        <path d="M36.5 66 Q100 58 163.5 66"/>
+        <path d="M28 100 H172"/>
+        <path d="M36.5 134 Q100 142 163.5 134"/>
+        <path d="M66 36.5 Q58 100 66 163.5"/>
+        <path d="M100 28 V172"/>
+        <path d="M134 36.5 Q142 100 134 163.5"/>
+      </g>
+    </g>
+  </defs>
+</svg>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   CONFIG — единственное место, где нужно менять данные
+   ══════════════════════════════════════════════════════════════ */
+const CONFIG = {
+  groom: "Азамат",
+  bride: "Айдана",
+
+  // Дата и время начала (для отсчёта). +06:00 — часовой пояс Бишкека
+  dateISO: "2026-08-15T17:00:00+06:00",
+  dateText: "15-август, 2026-жыл",
+  weekday: "ишемби",
+  timeText: "17:00",
+
+  venue: "«Алтын Ордо» той ордосу",
+  address: "Бишкек ш., Ахунбаев көч., 123",
+  mapUrl: "https://2gis.kg/bishkek",          // ссылка на точку в 2GIS / Google Maps
+
+  whatsappPhone: "996700123456",              // номер без "+" и пробелов
+  whatsappText: "Саламатсызбы! Мен тойго катышам ✨",
+  rsvpDeadline: "1-августка чейин",
+
+  // Той ээлери — оставь "" (пустую строку), чтобы скрыть строку
+  hosts: "Той ээлери: Бакыт & Гүлмира",
+
+  program: [
+    ["17:00", "Конокторду тосуу"],
+    ["18:00", "Салтанаттуу бөлүк"],
+    ["19:00", "Куттуктоолор жана ак баталар"],
+    ["21:00", "Бий кечеси"],
+    ["22:30", "Той торту"],
+  ],
+};
+/* ══════════════════════════ /CONFIG ══════════════════════════ */
+
+const $ = id => document.getElementById(id);
+
+// Подстановка данных
+$("name-groom").textContent = CONFIG.groom;
+$("name-bride").textContent = CONFIG.bride;
+$("hero-date").textContent  = CONFIG.dateText;
+$("hero-sub").textContent   = CONFIG.weekday + " · саат " + CONFIG.timeText;
+$("det-date").textContent   = CONFIG.dateText + " · " + CONFIG.weekday;
+$("det-time").textContent   = CONFIG.timeText;
+$("det-venue").firstChild.textContent = CONFIG.venue;
+$("det-address").textContent = CONFIG.address;
+$("rsvp-deadline").textContent = CONFIG.rsvpDeadline;
+$("map-btn").href = CONFIG.mapUrl;
+$("wa-btn").href = "https://wa.me/" + CONFIG.whatsappPhone +
+                   "?text=" + encodeURIComponent(CONFIG.whatsappText);
+$("foot-names").textContent = CONFIG.groom + " & " + CONFIG.bride +
+                              " · " + new Date(CONFIG.dateISO).getFullYear();
+document.title = CONFIG.groom + " & " + CONFIG.bride + " — Үйлөнүү тою";
+
+if (CONFIG.hosts) { $("hosts").textContent = CONFIG.hosts; }
+else { $("hosts").remove(); }
+
+// Программа
+const ul = $("program-list");
+CONFIG.program.forEach(([t, n]) => {
+  const li = document.createElement("li");
+  const time = document.createElement("div");
+  time.className = "t-time"; time.textContent = t;
+  const name = document.createElement("div");
+  name.className = "t-name"; name.textContent = n;
+  li.append(time, name);
+  ul.appendChild(li);
+});
+
+// Обратный отсчёт
+const target = new Date(CONFIG.dateISO).getTime();
+const pad = v => String(v).padStart(2, "0");
+function tick() {
+  const diff = target - Date.now();
+  if (diff <= 0) {
+    $("cd-grid").hidden = true;
+    $("cd-done").hidden = false;
+    clearInterval(timer);
+    return;
+  }
+  $("cd-d").textContent = Math.floor(diff / 86400000);
+  $("cd-h").textContent = pad(Math.floor(diff / 3600000) % 24);
+  $("cd-m").textContent = pad(Math.floor(diff / 60000) % 60);
+  $("cd-s").textContent = pad(Math.floor(diff / 1000) % 60);
+}
+const timer = setInterval(tick, 1000);
+tick();
+
+// Появление секций при скролле
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
+</body>
 </html>
