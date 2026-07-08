@@ -27,25 +27,25 @@
 <meta property="og:image:height" content="1080">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://sezim-kyz-uzatuu.toi-invite.workers.dev/og-image.jpg">
-<meta name="theme-color" content="#B23F46">
+<meta name="theme-color" content="#A28457">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='44'%20fill='none'%20stroke='%23B9862F'%20stroke-width='7'/%3E%3Cpath%20d='M20%2050%20H80%20M50%2020%20V80%20M28%2033%20Q50%2026%2072%2033%20M28%2067%20Q50%2074%2072%2067'%20stroke='%23B9862F'%20stroke-width='6'%20fill='none'%20stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='44'%20fill='none'%20stroke='%23C6AA76'%20stroke-width='5'/%3E%3Ctext%20x='50'%20y='66'%20text-anchor='middle'%20font-family='Georgia,serif'%20font-size='46'%20font-style='italic'%20fill='%23C6AA76'%3EС%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --boz:#F6F0E4;          /* ак кийиз — фон */
-    --boz-deep:#EEE4CF;
-    --kyzyl:#B23F46;        /* красный шырдака, светлее */
-    --kyzyl-deep:#98333C;
-    --altyn:#B9862F;        /* старое золото */
-    --altyn-soft:#D8B978;   /* бледное золото для тёмного фона */
-    --ink:#33231C;
-    --muted:#7C6A57;
+    --boz:#F9F5EF;          /* слоновая кость — фон */
+    --boz-deep:#F0E9DE;
+    --kyzyl:#A28457;        /* шампань-бронза, акцент */
+    --kyzyl-deep:#8C7148;
+    --altyn:#C6AA76;        /* шампань-золото */
+    --altyn-soft:#E2D3B0;   /* светлое золото для тёмного фона */
+    --ink:#3B332B;
+    --muted:#8D7E6C;
     --serif:'Noto Serif Display', Georgia, serif;
     --sans:'Noto Sans', -apple-system, sans-serif;
   }
@@ -75,7 +75,7 @@
     display:grid;place-content:center;
     text-align:center;
     padding:96px 34px;
-    background:radial-gradient(closest-side at 50% 42%,#FBF7ED 0%,var(--boz) 100%);
+    background:radial-gradient(closest-side at 50% 42%,#FEFCF8 0%,var(--boz) 100%);
   }
   .corner{position:absolute;width:clamp(60px,12vw,104px);height:auto;color:var(--altyn);opacity:.9}
   .c-tl{top:14px;left:14px}
@@ -158,12 +158,12 @@
   @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
   /* ── ПРИГЛАШЕНИЕ ──────────────────────────── */
-  .invite p{max-width:520px;margin:0 auto 16px;color:#4A382D;font-size:1.02rem}
+  .invite p{max-width:520px;margin:0 auto 16px;color:#57493A;font-size:1.02rem}
   .invite .divider{width:230px;margin:6px auto 26px;color:var(--altyn)}
   .verse{
     font-family:var(--serif);font-style:italic;
     font-size:1.08rem;line-height:2;
-    color:#4A382D;max-width:420px;margin:0 auto 26px;
+    color:#57493A;max-width:420px;margin:0 auto 26px;
   }
   .band .verse{color:rgba(246,240,228,.92);margin-bottom:22px}
 
@@ -176,12 +176,12 @@
   }
   .band h2{color:var(--boz)}
   .band::before,.band::after{
-    content:"";position:absolute;left:0;right:0;height:18px;
-    background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 18" fill="none" stroke="%23D8B978" stroke-linecap="round"><path d="M4 14 C4 6 10 3 16 3 C24 3 28 8 27 12 C26.2 15.2 22 16 20 13.6 C18.4 11.6 19.4 8.6 22 8.6" stroke-width="2.2"/><path d="M31 4 C38 4 44 7 44 14" stroke-width="2.2"/><circle cx="50" cy="14" r="1.8" fill="%23D8B978" stroke="none"/></svg>') repeat-x center / auto 15px;
-    opacity:.85;
+    content:"";position:absolute;left:10%;right:10%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--altyn-soft) 50%,transparent);
+    opacity:.8;
   }
-  .band::before{top:16px}
-  .band::after{bottom:16px;transform:scaleY(-1)}
+  .band::before{top:22px}
+  .band::after{bottom:22px}
   .band-mark{
     position:absolute;left:50%;top:50%;
     width:min(480px,120vw);height:auto;
@@ -287,7 +287,7 @@
     position:fixed;inset:0;z-index:100;
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
     padding:24px;
-    background:radial-gradient(closest-side at 50% 45%,#FBF7ED 0%,var(--boz) 100%);
+    background:radial-gradient(closest-side at 50% 45%,#FEFCF8 0%,var(--boz) 100%);
     transition:opacity .85s ease .1s,visibility .95s;
   }
   .env-screen.gone{opacity:0;visibility:hidden;pointer-events:none}
@@ -483,25 +483,18 @@
 <header class="hero">
   <div class="hero-sparks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <svg class="corner c-tl" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-    <path d="M118 10 H30 Q10 10 10 30 V118" stroke="currentColor" stroke-width="2.4"/>
-    <path d="M118 20 H36 Q20 20 20 36 V118" stroke="currentColor" stroke-width="1" opacity=".55"/>
-    <path d="M34 34 C46 26 60 30 62 42 C63.5 51 56 57 48.5 55.5 C43 54.4 40.5 49 42.5 44.5 C44 41 48.4 40 51 42.4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M118 10 H30 Q10 10 10 30 V118" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M118 20 H36 Q20 20 20 36 V118" stroke="currentColor" stroke-width=".8" opacity=".5"/>
+    <circle cx="30" cy="30" r="3" fill="currentColor" stroke="none"/>
   </svg>
   <svg class="corner c-tr" viewBox="0 0 120 120" fill="none" aria-hidden="true"><use href="#corner-src"/></svg>
   <svg class="corner c-br" viewBox="0 0 120 120" fill="none" aria-hidden="true"><use href="#corner-src"/></svg>
   <svg class="corner c-bl" viewBox="0 0 120 120" fill="none" aria-hidden="true"><use href="#corner-src"/></svg>
 
   <svg class="tunduk" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true">
-    <circle class="tk-draw" pathLength="1" cx="100" cy="100" r="88" stroke-width="6"/>
-    <circle class="tk-draw" pathLength="1" cx="100" cy="100" r="72" stroke-width="1.6"/>
-    <g stroke-width="5.5" stroke-linecap="round">
-      <path class="tk-draw" pathLength="1" d="M36.5 66 Q100 58 163.5 66"/>
-      <path class="tk-draw" pathLength="1" d="M28 100 H172"/>
-      <path class="tk-draw" pathLength="1" d="M36.5 134 Q100 142 163.5 134"/>
-      <path class="tk-draw" pathLength="1" d="M66 36.5 Q58 100 66 163.5"/>
-      <path class="tk-draw" pathLength="1" d="M100 28 V172"/>
-      <path class="tk-draw" pathLength="1" d="M134 36.5 Q142 100 134 163.5"/>
-    </g>
+    <circle class="tk-draw" pathLength="1" cx="100" cy="100" r="88" stroke-width="2.4"/>
+    <circle class="tk-draw" pathLength="1" cx="100" cy="100" r="79" stroke-width=".9" opacity=".6"/>
+    <text x="100" y="130" text-anchor="middle" font-family="'Noto Serif Display',Georgia,serif" font-size="86" font-style="italic" fill="currentColor" stroke="none">С</text>
   </svg>
 
   <p class="eyebrow anim d1">Кыз узатуу тою</p>
@@ -512,16 +505,14 @@
   </h1>
 
   <svg class="divider anim d3" viewBox="0 0 320 84" fill="none" aria-hidden="true">
-    <g stroke="currentColor" stroke-width="3.4" stroke-linecap="round">
-      <path id="horn-src" d="M166 36 C196 18 232 22 240 46 C246 66 232 80 214 78 C200 76.5 192 66 194 54 C195.5 45 204 40 212 42.5 C218 44.5 221 50.5 219 56 C217.4 60.5 212.5 62.6 208.6 60.6"/>
-      <use href="#horn-src" transform="translate(320,0) scale(-1,1)"/>
+    <g stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+      <path d="M16 42 H138"/><path d="M182 42 H304"/>
     </g>
-    <path d="M160 31 L171 42 L160 53 L149 42 Z" fill="currentColor"/>
-    <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-      <path d="M12 42 H70"/><path d="M250 42 H308"/>
-    </g>
-    <circle cx="12" cy="42" r="2.6" fill="currentColor"/>
-    <circle cx="308" cy="42" r="2.6" fill="currentColor"/>
+    <path d="M160 33 L169 42 L160 51 L151 42 Z" fill="currentColor"/>
+    <circle cx="144" cy="42" r="1.8" fill="currentColor"/>
+    <circle cx="176" cy="42" r="1.8" fill="currentColor"/>
+    <circle cx="16" cy="42" r="2.2" fill="currentColor"/>
+    <circle cx="304" cy="42" r="2.2" fill="currentColor"/>
   </svg>
 
   <p class="hero-date anim d4" id="hero-date">1-август, 2026-жыл</p>
@@ -645,33 +636,24 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <g id="corner-src">
-      <path d="M118 10 H30 Q10 10 10 30 V118" stroke="currentColor" stroke-width="2.4" fill="none"/>
-      <path d="M118 20 H36 Q20 20 20 36 V118" stroke="currentColor" stroke-width="1" opacity=".55" fill="none"/>
-      <path d="M34 34 C46 26 60 30 62 42 C63.5 51 56 57 48.5 55.5 C43 54.4 40.5 49 42.5 44.5 C44 41 48.4 40 51 42.4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+      <path d="M118 10 H30 Q10 10 10 30 V118" stroke="currentColor" stroke-width="1.6" fill="none"/>
+      <path d="M118 20 H36 Q20 20 20 36 V118" stroke="currentColor" stroke-width=".8" opacity=".5" fill="none"/>
+      <circle cx="30" cy="30" r="3" fill="currentColor" stroke="none"/>
     </g>
     <g id="divider-src">
-      <g stroke="currentColor" stroke-width="3.4" stroke-linecap="round" fill="none">
-        <path d="M166 36 C196 18 232 22 240 46 C246 66 232 80 214 78 C200 76.5 192 66 194 54 C195.5 45 204 40 212 42.5 C218 44.5 221 50.5 219 56 C217.4 60.5 212.5 62.6 208.6 60.6"/>
-        <path d="M166 36 C196 18 232 22 240 46 C246 66 232 80 214 78 C200 76.5 192 66 194 54 C195.5 45 204 40 212 42.5 C218 44.5 221 50.5 219 56 C217.4 60.5 212.5 62.6 208.6 60.6" transform="translate(320,0) scale(-1,1)"/>
+      <g stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none">
+        <path d="M16 42 H138"/><path d="M182 42 H304"/>
       </g>
-      <path d="M160 31 L171 42 L160 53 L149 42 Z" fill="currentColor"/>
-      <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-        <path d="M12 42 H70"/><path d="M250 42 H308"/>
-      </g>
-      <circle cx="12" cy="42" r="2.6" fill="currentColor"/>
-      <circle cx="308" cy="42" r="2.6" fill="currentColor"/>
+      <path d="M160 33 L169 42 L160 51 L151 42 Z" fill="currentColor"/>
+      <circle cx="144" cy="42" r="1.8" fill="currentColor"/>
+      <circle cx="176" cy="42" r="1.8" fill="currentColor"/>
+      <circle cx="16" cy="42" r="2.2" fill="currentColor"/>
+      <circle cx="304" cy="42" r="2.2" fill="currentColor"/>
     </g>
     <g id="tunduk-src">
-      <circle cx="100" cy="100" r="88" stroke-width="6" fill="none"/>
-      <circle cx="100" cy="100" r="72" stroke-width="1.6" fill="none"/>
-      <g stroke-width="5.5" stroke-linecap="round" fill="none">
-        <path d="M36.5 66 Q100 58 163.5 66"/>
-        <path d="M28 100 H172"/>
-        <path d="M36.5 134 Q100 142 163.5 134"/>
-        <path d="M66 36.5 Q58 100 66 163.5"/>
-        <path d="M100 28 V172"/>
-        <path d="M134 36.5 Q142 100 134 163.5"/>
-      </g>
+      <circle cx="100" cy="100" r="88" stroke-width="2.4" fill="none"/>
+      <circle cx="100" cy="100" r="79" stroke-width=".9" opacity=".6" fill="none"/>
+      <text x="100" y="130" text-anchor="middle" font-family="'Noto Serif Display',Georgia,serif" font-size="86" font-style="italic" fill="currentColor" stroke="none">С</text>
     </g>
   </defs>
 </svg>
