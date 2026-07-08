@@ -447,7 +447,9 @@
   .blessing .band-mark{opacity:.05}
   .blessing h2{margin-bottom:20px}
   .blessing .verse{
-    font-size:1.3rem;line-height:2.15;margin-bottom:0;
+    font-size:clamp(.98rem,4.3vw,1.18rem);
+    line-height:2.2;margin-bottom:0;
+    max-width:none;white-space:nowrap;
     color:var(--boz);
     text-shadow:0 1px 3px rgba(0,0,0,.18);
   }
