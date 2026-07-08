@@ -34,7 +34,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='44'%20fill='none'%20stroke='%23C6AA76'%20stroke-width='5'/%3E%3Ctext%20x='50'%20y='66'%20text-anchor='middle'%20font-family='Georgia,serif'%20font-size='46'%20font-style='italic'%20fill='%23C6AA76'%3EС%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@400;500;600&family=Comforter&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -55,9 +55,19 @@
     font-family:var(--sans);
     font-size:16px;line-height:1.7;
     color:var(--ink);
-    background:var(--boz);
+    background:
+      radial-gradient(640px 420px at 10% 6%,#F4EADA 0%,transparent 68%),
+      radial-gradient(520px 380px at 92% 24%,#F7EEE3 0%,transparent 70%),
+      radial-gradient(720px 520px at 46% 96%,#F2E7D3 0%,transparent 70%),
+      var(--boz);
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+  }
+  /* зерно бумаги — едва заметная плёнка поверх всей страницы */
+  body::after{
+    content:"";position:fixed;inset:0;z-index:120;pointer-events:none;
+    opacity:.05;mix-blend-mode:multiply;
+    background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="220" height="220" filter="url(%23n)"/></svg>');
   }
   h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15}
   a{color:inherit}
@@ -77,11 +87,9 @@
     padding:96px 34px;
     background:radial-gradient(closest-side at 50% 42%,#FEFCF8 0%,var(--boz) 100%);
   }
-  .corner{position:absolute;width:clamp(60px,12vw,104px);height:auto;color:var(--altyn);opacity:.9}
-  .c-tl{top:14px;left:14px}
-  .c-tr{top:14px;right:14px;transform:rotate(90deg)}
-  .c-br{bottom:14px;right:14px;transform:rotate(180deg)}
-  .c-bl{bottom:14px;left:14px;transform:rotate(270deg)}
+  .flora{position:absolute;height:auto;color:var(--altyn);pointer-events:none}
+  .f-tl{width:clamp(150px,42vw,250px);top:-12px;left:-16px;transform:scaleY(-1);opacity:.6}
+  .f-br{width:clamp(150px,42vw,250px);bottom:-12px;right:-16px;transform:scaleX(-1);opacity:.6}
 
   .tunduk{width:clamp(72px,17vw,96px);height:auto;color:var(--altyn);margin:0 auto 26px}
   .tk-draw{stroke-dasharray:1;stroke-dashoffset:1}
@@ -95,15 +103,17 @@
     margin-bottom:18px;
   }
   .names{
-    font-size:clamp(2.9rem,13vw,5.4rem);
-    letter-spacing:.01em;
-    display:grid;gap:.02em;
+    font-family:'Comforter',var(--serif);font-weight:400;
+    font-size:clamp(3.4rem,16vw,6.2rem);
+    letter-spacing:0;line-height:1.25;
+    display:grid;gap:0;
+    padding:0 .2em;
   }
   .names .amp{
-    font-style:italic;font-weight:400;
-    font-size:.3em;color:var(--altyn);
-    letter-spacing:.05em;
-    margin:.2em 0 0;
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:.28em;color:var(--kyzyl);
+    letter-spacing:.06em;
+    margin:.1em 0 0;
   }
   .hero .divider{width:clamp(210px,56vw,280px);margin:26px auto 22px;color:var(--altyn)}
   .hero-date{
@@ -157,6 +167,24 @@
   .d4{animation-delay:1.65s}.d5{animation-delay:1.8s}
   @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
+  /* ── ВЕТОЧКА НАД ЗАГОЛОВКАМИ ──────────────── */
+  .sprig{width:118px;height:auto;margin:0 auto 12px;color:var(--kyzyl);opacity:.85}
+  .band .sprig{color:var(--altyn-soft)}
+
+  /* ── АРКА-РАМКА ───────────────────────────── */
+  .arch{
+    position:relative;
+    border:1px solid rgba(198,170,118,.55);
+    border-radius:min(44vw,215px) min(44vw,215px) 18px 18px;
+    padding:56px 24px 36px;
+    background:linear-gradient(180deg,rgba(255,253,248,.85),rgba(255,253,248,0) 60%);
+  }
+  .arch::before{
+    content:"";position:absolute;inset:7px;pointer-events:none;
+    border:1px solid rgba(198,170,118,.28);
+    border-radius:inherit;
+  }
+
   /* ── ПРИГЛАШЕНИЕ ──────────────────────────── */
   .invite p{max-width:520px;margin:0 auto 16px;color:#57493A;font-size:1.02rem}
   .invite .divider{width:230px;margin:6px auto 26px;color:var(--altyn)}
@@ -170,7 +198,7 @@
   /* ── ТЁМНО-КРАСНЫЕ ЛЕНТЫ ──────────────────── */
   .band{
     position:relative;overflow:hidden;
-    background:linear-gradient(180deg,var(--kyzyl) 0%,var(--kyzyl-deep) 100%);
+    background:linear-gradient(165deg,#B29467 0%,var(--kyzyl) 42%,var(--kyzyl-deep) 100%);
     color:var(--boz);
     padding:96px 24px;
   }
@@ -430,6 +458,7 @@
     color:var(--boz);
     text-shadow:0 1px 3px rgba(0,0,0,.18);
   }
+  body.video-mode .arch{padding:36px 16px 24px;border-radius:150px 150px 14px 14px}
   /* секция «Качан жана кайда» должна влезать даже с панелью браузера */
   body.video-mode .details{padding:28px 24px}
   body.video-mode .details h2{font-size:1.55rem;margin-bottom:6px}
@@ -482,14 +511,8 @@
 <!-- ═══ HERO ═══ -->
 <header class="hero">
   <div class="hero-sparks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <svg class="corner c-tl" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-    <path d="M118 10 H30 Q10 10 10 30 V118" stroke="currentColor" stroke-width="1.6"/>
-    <path d="M118 20 H36 Q20 20 20 36 V118" stroke="currentColor" stroke-width=".8" opacity=".5"/>
-    <circle cx="30" cy="30" r="3" fill="currentColor" stroke="none"/>
-  </svg>
-  <svg class="corner c-tr" viewBox="0 0 120 120" fill="none" aria-hidden="true"><use href="#corner-src"/></svg>
-  <svg class="corner c-br" viewBox="0 0 120 120" fill="none" aria-hidden="true"><use href="#corner-src"/></svg>
-  <svg class="corner c-bl" viewBox="0 0 120 120" fill="none" aria-hidden="true"><use href="#corner-src"/></svg>
+  <svg class="flora f-tl" viewBox="0 0 220 260" fill="none" aria-hidden="true"><use href="#branch-src"/></svg>
+  <svg class="flora f-br" viewBox="0 0 220 260" fill="none" aria-hidden="true"><use href="#branch-src"/></svg>
 
   <svg class="tunduk" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true">
     <circle class="tk-draw" pathLength="1" cx="100" cy="100" r="88" stroke-width="2.4"/>
@@ -526,13 +549,15 @@
 <!-- ═══ ПРИГЛАШЕНИЕ ═══ -->
 <section class="invite reveal">
   <div class="wrap">
+    <div class="arch">
+    <svg class="sprig" viewBox="0 0 120 32" fill="none" aria-hidden="true"><use href="#sprig-src"/></svg>
     <h2>Урматтуу коноктор!</h2>
-    <svg class="divider" viewBox="0 0 320 84" fill="none" aria-hidden="true"><use href="#divider-src"/></svg>
     <p class="verse">Аздектеп кызды чоңойтуу,<br>
     Ата-эненин парзы экен.<br>
     Бой жетсе кызды узатуу,<br>
     Эзелтен келген салт экен.</p>
     <p>Сиздерди кызыбыз <strong>Сезимдин</strong> кыз узатуу аземине арналган салтанаттуу ак дасторкон үстүндө кадырлуу коногубуз болуп, ак батаңыздарды берип кетүүгө чакырабыз!</p>
+    </div>
   </div>
 </section>
 
@@ -540,6 +565,7 @@
 <section class="band reveal" id="countdown">
   <svg class="band-mark" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
   <div class="wrap">
+    <svg class="sprig" viewBox="0 0 120 32" fill="none" aria-hidden="true"><use href="#sprig-src"/></svg>
     <h2>Тойго чейин калды</h2>
     <div class="cd-grid" id="cd-grid">
       <div class="cd-cell"><div class="cd-num" id="cd-d">—</div><div class="cd-lbl">Күн</div></div>
@@ -555,6 +581,7 @@
 <section class="band blessing reveal">
   <svg class="band-mark" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
   <div class="wrap">
+    <svg class="sprig" viewBox="0 0 120 32" fill="none" aria-hidden="true"><use href="#sprig-src"/></svg>
     <h2>Кыз узатуу — улуу салт</h2>
     <p class="verse">Барктап келген улуу салттуу элибиз,<br>
     Кыз узатуу аземине келиңиз.<br>
@@ -566,8 +593,8 @@
 <!-- ═══ КОГДА И ГДЕ ═══ -->
 <section class="details reveal">
   <div class="wrap">
+    <svg class="sprig" viewBox="0 0 120 32" fill="none" aria-hidden="true"><use href="#sprig-src"/></svg>
     <h2>Качан жана кайда</h2>
-    <svg class="divider" viewBox="0 0 320 84" fill="none" aria-hidden="true"><use href="#divider-src"/></svg>
     <div class="cal" aria-label="Август 2026, тою 1-августта">
       <div class="cal-month">Август · 2026</div>
       <div class="cal-grid">
@@ -601,6 +628,7 @@
 <section class="band rsvp reveal">
   <svg class="band-mark" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
   <div class="wrap">
+    <svg class="sprig" viewBox="0 0 120 32" fill="none" aria-hidden="true"><use href="#sprig-src"/></svg>
     <h2>Катышууңузду тастыктаңыз</h2>
     <p class="verse">Барктап келген улуу салттуу элибиз,<br>
     Кыз узатуу аземине келиңиз.<br>
@@ -635,10 +663,45 @@
 <!-- Скрытые исходники орнаментов для переиспользования через <use> -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <g id="corner-src">
-      <path d="M118 10 H30 Q10 10 10 30 V118" stroke="currentColor" stroke-width="1.6" fill="none"/>
-      <path d="M118 20 H36 Q20 20 20 36 V118" stroke="currentColor" stroke-width=".8" opacity=".5" fill="none"/>
-      <circle cx="30" cy="30" r="3" fill="currentColor" stroke="none"/>
+    <path id="leaf-src" d="M0 0 C9 -7 21 -8 31 -2 C21 5 9 5 0 0 Z"/>
+    <g id="branch-src">
+      <path d="M22 252 C55 200 82 150 112 100 C126 76 138 56 152 34" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <g fill="currentColor" stroke="none">
+        <use href="#leaf-src" transform="translate(34 232) rotate(-92) scale(1.02)"/>
+        <use href="#leaf-src" transform="translate(40 224) rotate(-8) scale(1.06)"/>
+        <use href="#leaf-src" transform="translate(52 204) rotate(-96) scale(.98)"/>
+        <use href="#leaf-src" transform="translate(58 196) rotate(-12) scale(1.02)"/>
+        <use href="#leaf-src" transform="translate(70 176) rotate(-100) scale(.94)"/>
+        <use href="#leaf-src" transform="translate(76 168) rotate(-16) scale(.98)"/>
+        <use href="#leaf-src" transform="translate(88 148) rotate(-104) scale(.9)"/>
+        <use href="#leaf-src" transform="translate(94 140) rotate(-20) scale(.94)"/>
+        <use href="#leaf-src" transform="translate(105 121) rotate(-108) scale(.84)"/>
+        <use href="#leaf-src" transform="translate(111 113) rotate(-24) scale(.88)"/>
+        <use href="#leaf-src" transform="translate(122 94) rotate(-112) scale(.78)"/>
+        <use href="#leaf-src" transform="translate(128 86) rotate(-28) scale(.8)"/>
+        <use href="#leaf-src" transform="translate(138 68) rotate(-116) scale(.7)"/>
+        <use href="#leaf-src" transform="translate(144 60) rotate(-32) scale(.72)"/>
+      </g>
+      <g fill="currentColor" opacity=".55" stroke="none">
+        <circle cx="48" cy="238" r="2.6"/>
+        <circle cx="84" cy="180" r="2.3"/>
+        <circle cx="118" cy="124" r="2"/>
+        <circle cx="150" cy="72" r="1.8"/>
+        <circle cx="158" cy="28" r="2.2"/>
+      </g>
+    </g>
+    <g id="sprig-src">
+      <path d="M8 26 C40 20 80 14 112 10" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <g fill="currentColor" stroke="none">
+        <use href="#leaf-src" transform="translate(22 23) rotate(-64) scale(.5)"/>
+        <use href="#leaf-src" transform="translate(30 21) rotate(18) scale(.52)"/>
+        <use href="#leaf-src" transform="translate(48 19) rotate(-68) scale(.46)"/>
+        <use href="#leaf-src" transform="translate(56 17) rotate(14) scale(.48)"/>
+        <use href="#leaf-src" transform="translate(74 15) rotate(-72) scale(.4)"/>
+        <use href="#leaf-src" transform="translate(82 13) rotate(10) scale(.42)"/>
+      </g>
+      <circle cx="112" cy="10" r="1.8" fill="currentColor" stroke="none"/>
+      <circle cx="8" cy="26" r="1.6" fill="currentColor" stroke="none" opacity=".6"/>
     </g>
     <g id="divider-src">
       <g stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none">
