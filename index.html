@@ -22,6 +22,9 @@
 <meta property="og:title" content="Сезим — Кыз узатуу тою">
 <meta property="og:description" content="1-август, 2026 · саат 13:00 · Семетей айылы, «Байтик» рестораны. Сиздерди кызыбыз Сезимдин узатуу тоюна чакырабыз!">
 <meta name="theme-color" content="#B23F46">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='44'%20fill='none'%20stroke='%23B9862F'%20stroke-width='7'/%3E%3Cpath%20d='M20%2050%20H80%20M50%2020%20V80%20M28%2033%20Q50%2026%2072%2033%20M28%2067%20Q50%2074%2072%2067'%20stroke='%23B9862F'%20stroke-width='6'%20fill='none'%20stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -436,11 +439,16 @@
   body.video-mode #countdown{display:none}
   body.video-mode .blessing{display:flex}
   .blessing .verse{font-size:1.16rem;margin-bottom:0}
-  body.video-mode .details .divider{margin-bottom:14px}
-  body.video-mode .cal{margin-bottom:16px}
-  body.video-mode .cal-month{margin-bottom:10px}
-  body.video-mode .cal-grid span{line-height:1.85}
-  body.video-mode .row{padding:11px 0}
+  /* секция «Качан жана кайда» должна влезать даже с панелью браузера */
+  body.video-mode .details{padding:28px 24px}
+  body.video-mode .details h2{font-size:1.55rem;margin-bottom:6px}
+  body.video-mode .details .divider{display:none}
+  body.video-mode .cal{max-width:300px;margin-bottom:12px}
+  body.video-mode .cal-month{font-size:1.02rem;margin-bottom:8px}
+  body.video-mode .cal-grid{row-gap:6px}
+  body.video-mode .cal-grid span{line-height:1.7;font-size:.92rem}
+  body.video-mode .row{padding:9px 0}
+  body.video-mode .val{font-size:1.12rem}
 
   @media (prefers-reduced-motion:reduce){
     .anim,.scroll-cue,body.opened .anim,body.opened .scroll-cue{animation:none;opacity:1}
