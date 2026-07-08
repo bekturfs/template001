@@ -407,21 +407,21 @@
   /* каскад текстов: веточка → заголовок → стихи → абзацы → кнопки */
   .reveal .sprig,.reveal h2,.reveal .verse,.reveal p,.reveal .cal,
   .reveal .btn,.reveal .foot-tunduk{
-    opacity:0;transform:translateY(15px);
-    transition:opacity .75s cubic-bezier(.22,.61,.36,1),transform .75s cubic-bezier(.22,.61,.36,1);
+    opacity:0;transform:translateY(17px);
+    transition:opacity 1.4s cubic-bezier(.22,.61,.36,1),transform 1.4s cubic-bezier(.22,.61,.36,1);
   }
   .reveal.visible .sprig,.reveal.visible h2,.reveal.visible .verse,
   .reveal.visible p,.reveal.visible .cal,.reveal.visible .btn,
   .reveal.visible .foot-tunduk{opacity:1;transform:none}
-  .reveal.visible .sprig{transition-delay:.05s}
-  .reveal.visible h2{transition-delay:.2s}
-  .reveal.visible .cal{transition-delay:.3s}
-  .reveal.visible .verse{transition-delay:.38s}
-  .reveal.visible p{transition-delay:.6s}
-  .reveal.visible .btn{transition-delay:.85s}
-  .reveal.visible .foot-tunduk{transition-delay:.05s}
-  .reveal.visible .foot-pre{transition-delay:.25s}
-  .reveal.visible .foot-line{transition-delay:.45s}
+  .reveal.visible .sprig{transition-delay:.1s}
+  .reveal.visible h2{transition-delay:.45s}
+  .reveal.visible .cal{transition-delay:.75s}
+  .reveal.visible .verse{transition-delay:.9s}
+  .reveal.visible p{transition-delay:1.35s}
+  .reveal.visible .btn{transition-delay:1.8s}
+  .reveal.visible .foot-tunduk{transition-delay:.1s}
+  .reveal.visible .foot-pre{transition-delay:.55s}
+  .reveal.visible .foot-line{transition-delay:1s}
 
   /* мягкий каскад внутри секций */
   .row,.cd-cell{
@@ -906,12 +906,13 @@ function startAutoScroll() {
   let i = 0;
   const go = () => {
     if (i >= tops.length) return;
+    targets[i].classList.add("visible");   // каскад стартует вместе с проездом:
+                                            // к остановке секция уже собрана
     stage.style.transition = "transform " + TRAVEL + "ms cubic-bezier(.5,.02,.15,1)";
     stage.style.transform = "translate3d(0," + (-tops[i]) + "px,0)";
     let fired = false;
     const done = () => {
       if (fired) return; fired = true;
-      targets[i].classList.add("visible");   // тексты каскадом, пока «камера» стоит
       i++; setTimeout(go, DWELL);
     };
     stage.addEventListener("transitionend", done, { once: true });
