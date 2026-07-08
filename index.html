@@ -438,7 +438,13 @@
   .blessing{display:none}                      /* только для режима съёмки */
   body.video-mode #countdown{display:none}
   body.video-mode .blessing{display:flex}
-  .blessing .verse{font-size:1.16rem;margin-bottom:0}
+  .blessing .band-mark{opacity:.05}
+  .blessing h2{margin-bottom:20px}
+  .blessing .verse{
+    font-size:1.3rem;line-height:2.15;margin-bottom:0;
+    color:var(--boz);
+    text-shadow:0 1px 3px rgba(0,0,0,.18);
+  }
   /* секция «Качан жана кайда» должна влезать даже с панелью браузера */
   body.video-mode .details{padding:28px 24px}
   body.video-mode .details h2{font-size:1.55rem;margin-bottom:6px}
@@ -863,9 +869,12 @@ if (videoMode) {
   document.documentElement.style.scrollBehavior = "auto"; // скроллом управляем сами
 }
 function startAutoScroll() {
+  // раскрываем все секции заранее: анимации появления во время проезда
+  // накладываются на движение скролла и читаются как дёргание
+  document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
   const targets = [".invite", ".blessing", ".details", ".program", "footer"]
     .map(s => document.querySelector(s)).filter(Boolean);
-  const TRAVEL = 3200, DWELL = 4800;   // мс: проезд между секциями и пауза на секции
+  const TRAVEL = 4000, DWELL = 5300;   // мс: проезд между секциями и пауза на секции
   // smootherstep: нулевая скорость и ускорение на концах — без рывков и дрожи
   const ease = u => u <= 0 ? 0 : u >= 1 ? 1 : u * u * u * (u * (6 * u - 15) + 10);
   let i = 0;
