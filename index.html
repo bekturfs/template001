@@ -443,7 +443,8 @@
   }
   body.video-mode .wrap{width:100%}
   body.video-mode .rsvp,body.video-mode #map-btn,
-  body.video-mode .music-btn,body.video-mode .scroll-cue{display:none}
+  body.video-mode .music-btn,body.video-mode .scroll-cue,
+  body.video-mode .program,body.video-mode .foot-names{display:none}
   /* экран-конверт в режиме съёмки: без лишних надписей, имя крупнее */
   body.video-mode .env-hint,body.video-mode .env-t-main{display:none}
   body.video-mode .env-title small{
@@ -894,7 +895,7 @@ function startAutoScroll() {
   // окно не скроллим — двигаем контент transform'ом: его анимирует
   // композитор GPU в обход основного потока, поэтому движение ровное
   const stage = $("stage");
-  const targets = [".invite", ".blessing", ".details", ".program", "footer"]
+  const targets = [".invite", ".blessing", ".details", "footer"]
     .map(s => document.querySelector(s)).filter(Boolean);
   // offsetTop не зависит от CSS-трансформаций (в отличие от getBoundingClientRect,
   // который в момент замера ловит секции посреди анимации раскрытия)
