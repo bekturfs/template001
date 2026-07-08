@@ -858,11 +858,8 @@ function startAutoScroll() {
   const targets = [".invite", ".blessing", ".details", ".program", "footer"]
     .map(s => document.querySelector(s)).filter(Boolean);
   const TRAVEL = 2550, DWELL = 3900;   // мс: проезд между секциями и пауза на секции
-  const ease = u => {                  // пружина: быстрый старт, мягкое торможение
-    if (u >= 1) return 1;
-    const z = 0.85, w = 9, wd = w * Math.sqrt(1 - z * z);
-    return 1 - Math.exp(-z * w * u) * (Math.cos(wd * u) + z * w / wd * Math.sin(wd * u));
-  };
+  // smootherstep: нулевая скорость и ускорение на концах — без рывков и дрожи
+  const ease = u => u <= 0 ? 0 : u >= 1 ? 1 : u * u * u * (u * (6 * u - 15) + 10);
   let i = 0;
   const next = () => {
     if (i >= targets.length) return;
