@@ -91,8 +91,9 @@
   }
   .names .amp{
     font-style:italic;font-weight:400;
-    font-size:.42em;color:var(--altyn);
-    margin:.12em 0;
+    font-size:.3em;color:var(--altyn);
+    letter-spacing:.05em;
+    margin:.2em 0 0;
   }
   .hero .divider{width:clamp(210px,56vw,280px);margin:26px auto 22px;color:var(--altyn)}
   .hero-date{
@@ -205,6 +206,36 @@
   }
   .cd-done{font-family:var(--serif);font-size:1.5rem;margin-top:26px}
 
+  /* ── КАЛЕНДАРЬ ────────────────────────────── */
+  .cal{max-width:330px;margin:0 auto 34px}
+  .cal-month{
+    font-family:var(--serif);font-size:1.15rem;
+    letter-spacing:.22em;text-indent:.22em;text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .cal-grid{
+    display:grid;grid-template-columns:repeat(7,1fr);
+    row-gap:10px;font-variant-numeric:tabular-nums;
+  }
+  .cal-grid .dow{
+    font-size:.68rem;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--altyn);padding-bottom:4px;
+  }
+  .cal-grid span{font-family:var(--serif);font-size:.98rem;line-height:2.1}
+  .cal-day{position:relative;display:inline-block}
+  .cal-day b{font-weight:600;color:var(--kyzyl);position:relative;z-index:1}
+  .cal-ring{
+    position:absolute;left:50%;top:50%;
+    width:2.4em;height:2.1em;
+    transform:translate(-50%,-50%);
+    color:var(--kyzyl);pointer-events:none;
+  }
+  .cal-ring ellipse{
+    stroke-dasharray:1;stroke-dashoffset:1;
+    transition:stroke-dashoffset 1.3s cubic-bezier(.55,.06,.35,1) .7s;
+  }
+  .reveal.visible .cal-ring ellipse{stroke-dashoffset:0}
+
   /* ── КОГДА И ГДЕ ──────────────────────────── */
   .details .divider{width:230px;margin:6px auto 30px;color:var(--altyn)}
   .rows{max-width:440px;margin:0 auto;text-align:center}
@@ -271,8 +302,21 @@
   .foot-names{color:var(--muted);font-size:.88rem;letter-spacing:.14em;text-transform:uppercase;margin-top:14px}
 
   /* ── Появление секций при скролле ─────────── */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .reveal{
+    opacity:0;transform:translateY(26px);
+    transition:opacity 1s cubic-bezier(.22,.61,.36,1),transform 1s cubic-bezier(.22,.61,.36,1);
+  }
   .reveal.visible{opacity:1;transform:none}
+  /* мягкий каскад внутри секций */
+  .row,.cd-cell{
+    opacity:0;transform:translateY(12px);
+    transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1);
+  }
+  .reveal.visible .row,.reveal.visible .cd-cell{opacity:1;transform:none}
+  .reveal.visible .row:nth-child(1),.reveal.visible .cd-cell:nth-child(1){transition-delay:.15s}
+  .reveal.visible .row:nth-child(2),.reveal.visible .cd-cell:nth-child(2){transition-delay:.3s}
+  .reveal.visible .row:nth-child(3),.reveal.visible .cd-cell:nth-child(3){transition-delay:.45s}
+  .reveal.visible .cd-cell:nth-child(4){transition-delay:.6s}
 
   /* ── Кнопка музыки ────────────────────────── */
   .music-btn{
@@ -301,7 +345,8 @@
     .reveal{opacity:1;transform:none;transition:none}
     .hero-sparks{display:none}
     .cd-num.tick{animation:none}
-    .timeline li{opacity:1;transform:none;transition:none}
+    .timeline li,.row,.cd-cell{opacity:1;transform:none;transition:none}
+    .cal-ring ellipse{stroke-dashoffset:0;transition:none}
     .music-btn.playing::after{animation:none;display:none}
     html{scroll-behavior:auto}
   }
@@ -397,6 +442,23 @@
   <div class="wrap">
     <h2>Качан жана кайда</h2>
     <svg class="divider" viewBox="0 0 320 84" fill="none" aria-hidden="true"><use href="#divider-src"/></svg>
+    <div class="cal" aria-label="Август 2026, тою 1-августта">
+      <div class="cal-month">Август · 2026</div>
+      <div class="cal-grid">
+        <span class="dow">Дш</span><span class="dow">Ше</span><span class="dow">Ша</span><span class="dow">Бш</span><span class="dow">Жм</span><span class="dow">Иш</span><span class="dow">Жк</span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span class="cal-day"><b>1</b>
+          <svg class="cal-ring" viewBox="0 0 44 38" fill="none" aria-hidden="true">
+            <ellipse pathLength="1" cx="22" cy="19" rx="18.5" ry="14" transform="rotate(-7 22 19)" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span><span>2</span>
+        <span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+        <span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+        <span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span>
+        <span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
+        <span>31</span>
+      </div>
+    </div>
     <div class="rows">
       <div class="row"><span class="lbl">Күнү</span><span class="val" id="det-date">1-август, 2026-жыл · ишемби</span></div>
       <div class="row"><span class="lbl">Убактысы</span><span class="val" id="det-time">13:00</span></div>
