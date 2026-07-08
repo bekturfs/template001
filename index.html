@@ -113,7 +113,6 @@
     text-transform:uppercase;
   }
   .hero-sub{color:var(--muted);font-size:.95rem;margin-top:8px;letter-spacing:.05em}
-  .hosts{color:var(--muted);font-size:.88rem;margin-top:26px;font-style:italic}
 
   .scroll-cue{
     position:absolute;left:50%;bottom:24px;
@@ -167,10 +166,6 @@
     color:#4A382D;max-width:420px;margin:0 auto 26px;
   }
   .band .verse{color:rgba(246,240,228,.92);margin-bottom:22px}
-  .signature{
-    font-family:var(--serif);font-style:italic;
-    color:var(--muted);font-size:1rem;margin-top:24px !important;
-  }
 
   /* ── ТЁМНО-КРАСНЫЕ ЛЕНТЫ ──────────────────── */
   .band{
@@ -531,7 +526,6 @@
 
   <p class="hero-date anim d4" id="hero-date">1-август, 2026-жыл</p>
   <p class="hero-sub anim d4" id="hero-sub">ишемби · саат 13:00</p>
-  <p class="hosts anim d5" id="hosts"></p>
 
   <svg class="scroll-cue" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path d="M4 9 L12 17 L20 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -548,7 +542,6 @@
     Бой жетсе кызды узатуу,<br>
     Эзелтен келген салт экен.</p>
     <p>Сиздерди кызыбыз <strong>Сезимдин</strong> кыз узатуу аземине арналган салтанаттуу ак дасторкон үстүндө кадырлуу коногубуз болуп, ак батаңыздарды берип кетүүгө чакырабыз!</p>
-    <p class="signature">Сиздерди терең урматтоо менен,<br>той ээлери — Султан &amp; Нургул</p>
   </div>
 </section>
 
@@ -633,7 +626,7 @@
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <svg class="foot-tunduk" viewBox="0 0 200 200" fill="none" stroke="currentColor" aria-hidden="true"><use href="#tunduk-src"/></svg>
-  <p class="foot-line">Сиздерди чыдамсыздык менен күтөбүз!</p>
+  <p class="foot-line">Той ээлери: Султан &amp; Нургул</p>
 </footer>
 </div>
 
@@ -704,9 +697,6 @@ const CONFIG = {
   whatsappText: "Саламатсызбы! Мен Сезимдин кыз узатуу тоюна катышам ✨",
   rsvpDeadline: "25-июлга чейин",
 
-  // Той ээлери — оставь "" (пустую строку), чтобы скрыть строку
-  hosts: "Той ээлери: Султан & Нургул",
-
   // Музыка: mp3-файл рядом с index.html; "" — отключить совсем
   music: "music.mp3",
   musicVolume: 0.75,      // целевая громкость (0…1)
@@ -730,9 +720,6 @@ $("map-btn").href = CONFIG.mapUrl;
 $("wa-btn").href = "https://wa.me/" + CONFIG.whatsappPhone +
                    "?text=" + encodeURIComponent(CONFIG.whatsappText);
 document.title = CONFIG.celebrant + " — Кыз узатуу тою";
-
-if (CONFIG.hosts) { $("hosts").textContent = CONFIG.hosts; }
-else { $("hosts").remove(); }
 
 // Обратный отсчёт (с лёгкой анимацией смены цифр)
 const target = new Date(CONFIG.dateISO).getTime();
