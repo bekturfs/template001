@@ -435,6 +435,12 @@
   body.video-mode .wrap{width:100%}
   body.video-mode .rsvp,body.video-mode #map-btn,
   body.video-mode .music-btn,body.video-mode .scroll-cue{display:none}
+  /* экран-конверт в режиме съёмки: без лишних надписей, имя крупнее */
+  body.video-mode .env-hint,body.video-mode .env-t-main{display:none}
+  body.video-mode .env-title small{
+    font-size:1.3em;color:var(--ink);
+    letter-spacing:.08em;margin-top:0;
+  }
   .blessing{display:none}                      /* только для режима съёмки */
   body.video-mode #countdown{display:none}
   body.video-mode .blessing{display:flex}
@@ -475,7 +481,7 @@
 
 <!-- ═══ КОНВЕРТ (заставка) ═══ -->
 <div class="env-screen" id="env-screen">
-  <p class="env-title" id="env-title">Сизге чакыруу келди<small>Сезим · Кыз узатуу тою</small></p>
+  <p class="env-title" id="env-title"><span class="env-t-main">Сизге чакыруу келди</span><small>Сезим · Кыз узатуу тою</small></p>
   <button class="env" id="envelope" type="button" aria-label="Конвертти ачуу">
     <span class="env-back"></span>
     <span class="env-letter">
