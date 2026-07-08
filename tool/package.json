@@ -1,0 +1,9 @@
+{
+  "name": "scrollcast",
+  "version": "0.1.0",
+  "description": "Render a web page into a smooth-scrolling vertical video",
+  "main": "render.js",
+  "dependencies": {
+    "playwright-core": "^1.49.0"
+  }
+}
