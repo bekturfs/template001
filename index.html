@@ -967,9 +967,10 @@ function startAutoScroll() {
   let i = 0;
   const go = () => {
     if (i >= tops.length) return;
-    // каскад стартует на 65% пути: секция въезжает в кадр и оживает на глазах
+    // каскад стартует на 40% пути: к моменту, когда секция въезжает в кадр,
+    // первые элементы уже появляются, а последние доигрывают на паузе
     const sec = targets[i];
-    setTimeout(() => sec.classList.add("visible"), TRAVEL * 0.65);
+    setTimeout(() => sec.classList.add("visible"), TRAVEL * 0.4);
     stage.style.transition = "transform " + TRAVEL + "ms cubic-bezier(.5,.02,.15,1)";
     stage.style.transform = "translate3d(0," + (-tops[i]) + "px,0)";
     let fired = false;
